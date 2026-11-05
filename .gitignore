@@ -1,0 +1,3 @@
+.DS_Store
+# Lossless master paintings: large, and not needed on the site. Keep a backup elsewhere.
+production/masters/
