@@ -42,7 +42,7 @@ The paintings are placeholders for now (`assets/art/placeholder/`, made by
 
 ### Adding a painting
 
-1. Save the approved master (16:9, at least 2560 x 1440) to
+1. Save the approved master (16:9; 2560 x 1440 or larger is best, 1K works) to
    `production/masters/`, for example `03-canal.png`. Masters are git-ignored.
 2. Run `python3 scripts/process_art.py production/masters/03-canal.png` (needs
    `cwebp`). It writes 2560 and 1440 wide WebPs to `assets/art/`.

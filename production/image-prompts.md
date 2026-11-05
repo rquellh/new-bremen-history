@@ -6,7 +6,8 @@ look is approved.
 
 ## Output spec
 
-- 16:9, at least 2560 x 1440. Save the lossless master to
+- 16:9, ideally 2560 x 1440 or larger (the free playground tops out at 1K,
+  which is fine for samples). Save the lossless master to
   `production/masters/` (not published), then run `python3 scripts/process_art.py`.
 - No text, lettering, signatures, borders or frames in the image.
 - Leave the copy side quiet (paper, mist, sky or water), as noted per scene.
