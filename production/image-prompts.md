@@ -7,7 +7,7 @@ look is approved.
 ## Output spec
 
 - 16:9, at least 2560 x 1440. Save the lossless master to
-  `production/masters/` (not published), then run `scripts/process-art.sh`.
+  `production/masters/` (not published), then run `python3 scripts/process_art.py`.
 - No text, lettering, signatures, borders or frames in the image.
 - Leave the copy side quiet (paper, mist, sky or water), as noted per scene.
 - Keep the main subject inside the central 60% so phones can crop to it.

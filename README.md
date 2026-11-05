@@ -44,7 +44,7 @@ The paintings are placeholders for now (`assets/art/placeholder/`, made by
 
 1. Save the approved master (16:9, at least 2560 x 1440) to
    `production/masters/`, for example `03-canal.png`. Masters are git-ignored.
-2. Run `scripts/process-art.sh production/masters/03-canal.png` (needs
+2. Run `python3 scripts/process_art.py production/masters/03-canal.png` (needs
    `cwebp`). It writes 2560 and 1440 wide WebPs to `assets/art/`.
 3. Point the chapter's image at them; the script prints the markup to use.
 4. Update the image's `alt` text and, if the composition changed, the
@@ -53,7 +53,7 @@ The paintings are placeholders for now (`assets/art/placeholder/`, made by
 ### Adding a video moment
 
 1. Generate the clip from the chapter's approved still as its first frame.
-2. Run `scripts/normalize-clip.sh generated.mp4 assets/video/03-canal.mp4`
+2. Run `python3 scripts/normalize_clip.py generated.mp4 assets/video/03-canal.mp4`
    (needs `ffmpeg`).
 3. Add `data-video="assets/video/03-canal.mp4" data-zoom="1 1"` to the chapter.
 
