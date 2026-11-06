@@ -213,6 +213,27 @@ export class Stage {
 
     const e = smooth(0, 1, u);
     const [z0, z1] = s.zoom;
+
+    if (s.fit === 'contain') {
+      // The whole photograph, uncropped, laid on the page beside the text like
+      // a print. Its ink-treated edges already fade into the paper.
+      ctx.fillStyle = PAPER;
+      ctx.fillRect(0, 0, W, H);
+      const box = printBox(s.side, W, H);
+      const z = this.reduceMotion ? 1 : z0 + (z1 - z0) * e;
+      const scale = Math.min(box.w / sw, box.h / sh) * Math.min(z, 1.06);
+      const dw = sw * scale;
+      const dh = sh * scale;
+      let x = box.x + (box.w - dw) / 2;
+      let y = box.y + (box.h - dh) / 2;
+      if (!this.reduceMotion) {
+        x += s.drift[0] * W * e;
+        y += s.drift[1] * H * e;
+      }
+      ctx.drawImage(src, x, y, dw, dh);
+      return;
+    }
+
     const z = this.reduceMotion ? 1 : Math.max(1, z0 + (z1 - z0) * e);
     const scale = Math.max(W / sw, H / sh) * z;
     const dw = sw * scale;
@@ -279,6 +300,15 @@ export class Stage {
     this.mctx.putImageData(this.maskData, 0, 0);
     this.fctx.putImageData(this.fringeData, 0, 0);
   }
+}
+
+// Where a photo sits on the page: opposite its chapter's text. On a tall
+// (phone) screen the text is always a bottom panel, so the photo goes on top.
+function printBox(side, W, H) {
+  if (W / H < 1) return { x: W * 0.04, y: H * 0.07, w: W * 0.92, h: H * 0.48 };
+  if (side === 'right') return { x: W * 0.04, y: H * 0.08, w: W * 0.56, h: H * 0.84 };
+  if (side === 'bottom') return { x: W * 0.1, y: H * 0.05, w: W * 0.8, h: H * 0.56 };
+  return { x: W * 0.4, y: H * 0.08, w: W * 0.54, h: H * 0.84 };
 }
 
 function rasterize(img) {

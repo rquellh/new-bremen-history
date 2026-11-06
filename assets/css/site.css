@@ -429,3 +429,28 @@ h2 {
   .rail a::after,
   .rail span { transition: none; }
 }
+
+/* ---------- Photo credits ---------- */
+
+.credit {
+  margin-top: 1.1rem;
+  padding-top: 0.7rem;
+  border-top: 1px solid color-mix(in srgb, var(--ink-faint) 35%, transparent);
+  font-size: 0.8rem;
+  font-style: italic;
+  line-height: 1.45;
+  color: var(--ink-faint);
+}
+.copy .credit { color: var(--ink-faint); }
+.credit span {
+  display: block;
+  font-style: normal;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.art figcaption { font-size: 0.85rem; font-style: italic; color: var(--ink-faint); padding: 0.4rem var(--gutter) 0; }
+
+@media (max-width: 720px) {
+  .credit { margin-top: 0.7rem; padding-top: 0.5rem; font-size: 0.74rem; }
+}

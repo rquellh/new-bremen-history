@@ -31,6 +31,11 @@ def ink_photo(src: Path, width: int = 2048, levels: int = 6, line_strength: floa
     gray = cv2.imread(str(src), cv2.IMREAD_GRAYSCALE)
     if gray is None:
         raise SystemExit(f"can't read {src}")
+    return ink_array(gray, width, levels, line_strength, border)
+
+
+def ink_array(gray: np.ndarray, width: int = 2048, levels: int = 6, line_strength: float = 0.5, border: bool = True) -> np.ndarray:
+    """The ink treatment for a grayscale image already in memory; returns BGR."""
     gray = cv2.normalize(gray, None, 0, 255, cv2.NORM_MINMAX)
     gray = cv2.createCLAHE(clipLimit=1.4, tileGridSize=(8, 8)).apply(gray)
     height = round(gray.shape[0] * width / gray.shape[1])
@@ -41,11 +46,21 @@ def ink_photo(src: Path, width: int = 2048, levels: int = 6, line_strength: floa
     tone = cv2.cvtColor(smooth, cv2.COLOR_BGR2GRAY).astype(np.float32) / 255
 
     # 3. Ink-wash layers: quantized tones with soft steps, plus some continuous tone; lightened overall.
-    steps = cv2.GaussianBlur(np.clip(np.floor(tone * levels) / (levels - 1), 0, 1), (0, 0), 2.2)
-    wash = 1 - (1 - (0.55 * steps + 0.45 * tone)) * 0.85
+    # Mostly the photo's own continuous tone, with a softened hint of stepped washes;
+    # more steps than this turns flat areas (dirt, siding, sky) blotchy.
+    steps = cv2.GaussianBlur(np.clip(np.floor(tone * levels) / (levels - 1), 0, 1), (0, 0), 3.2)
+    wash = 1 - (1 - (0.35 * steps + 0.65 * tone)) * 0.85
 
     # 4. The photo's own edges as ink lines.
-    edges = cv2.Canny((tone * 255).astype(np.uint8), 40, 110)
+    # Trace a smoothed copy, then keep only long connected edges, so texture
+    # (dirt, grass, film grain) doesn't get outlined into blotches.
+    soft = cv2.GaussianBlur((tone * 255).astype(np.uint8), (0, 0), 1.6)
+    edges = cv2.Canny(soft, 55, 140)
+    count, labels, stats, _ = cv2.connectedComponentsWithStats(edges, connectivity=8)
+    min_len = max(40, width // 30)
+    keep = np.zeros(count, bool)
+    keep[1:] = np.maximum(stats[1:, cv2.CC_STAT_WIDTH], stats[1:, cv2.CC_STAT_HEIGHT]) >= min_len
+    edges = np.where(keep[labels], 255, 0).astype(np.uint8)
     edges = cv2.dilate(edges, np.ones((2, 2), np.uint8))
     lines = cv2.GaussianBlur(edges.astype(np.float32) / 255, (0, 0), 1.2) * line_strength
     t = np.clip(wash * (1 - lines), 0, 1)[..., None]  # 1 = paper, 0 = ink

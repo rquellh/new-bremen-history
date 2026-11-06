@@ -1,0 +1,92 @@
+# The photograph behind each chapter. scripts/build_photos.py reads this file.
+#
+# All photos are from the New Bremen Historic Association's galleries
+# (https://newbremenhistory.org/en/content/category/25-photo-galleries) and are
+# shown with their real dates. They are rendered in the ink style with ordinary
+# image filters (scripts/ink_photo.py); nothing is generated or invented.
+#
+# clean: rectangles [x, y, w, h] as fractions of the photo, holding captions
+#   that were written or printed on the photo. They're filled in from the
+#   surrounding pixels (OpenCV inpainting). Real signs in the scene stay.
+# credit: the caption shown on the site.
+#
+# Permission from the association is needed before publishing.
+
+[[photo]]
+file = "01-divide"
+nbha = "NBHA photos1181"
+url = "https://www.newbremenhistory.org/img/image-gallery/NBHA%20photos1181.jpg"
+original = "1909 photo of the Wm. F. Greber Walnut Hill Fruit Farm in the strawberry fields."
+credit = "Strawberry fields at the Walnut Hill Fruit Farm, 1909. The land is still this flat."
+
+[[photo]]
+file = "02-clearing"
+nbha = "NBHA photos1083"
+url = "https://www.newbremenhistory.org/img/image-gallery/NBHA%20photos1083.jpg"
+original = "The Luelleman House, begun in 1837."
+credit = "The Luelleman House, begun in 1837, now the association's museum."
+
+[[photo]]
+file = "03-canal"
+nbha = "NBHA photos199"
+url = "https://www.newbremenhistory.org/img/image-gallery/NBHA%20photos199.jpg"
+original = "Canal looking north at Lock I – after 1904."
+credit = "The canal at Lock One, looking north, after 1904."
+clean = [[0.245, 0.035, 0.49, 0.07]]  # printed postcard title
+
+[[photo]]
+file = "04-boomtown"
+nbha = "NBHA photos018"
+url = "https://www.newbremenhistory.org/img/image-gallery/NBHA%20photos018.jpg"
+original = "August Schneider & Henry Wiegman at barrel shop in 1898"
+credit = "August Schneider and Henry Wiegman at their barrel shop, 1898."
+
+[[photo]]
+file = "05-rails"
+nbha = "NBHA photos294"
+url = "https://www.newbremenhistory.org/img/image-gallery/NBHA%20photos294.jpg"
+original = "NB depot in 1962, before moving to Crown farm."
+credit = "The New Bremen railroad depot, photographed in 1962."
+
+[[photo]]
+file = "06-two-towns"
+nbha = "NBHA photos175"
+url = "https://www.newbremenhistory.org/img/image-gallery/NBHA%20photos175.jpg"
+original = "View from St. Paul Church looking south - circa 1900."
+credit = "Looking south from St. Paul Church, about 1900."
+
+[[photo]]
+file = "07-gaslight"
+nbha = "NBHA photos262"
+url = "https://www.newbremenhistory.org/img/image-gallery/NBHA%20photos262.jpg"
+original = "Installing natural gas lines to NB in 1888."
+credit = "The crew installing natural gas lines to New Bremen, 1888."
+
+[[photo]]
+file = "08-interurban"
+nbha = "NBHA photos002"
+url = "https://www.newbremenhistory.org/img/image-gallery/NBHA%20photos002.jpg"
+original = "Looking north, from Monroe St., with the Western Ohio Railway car approaching."
+credit = "Looking north on Main Street from Monroe Street as a Western Ohio Railway car approaches, early 1900s."
+clean = [[0.105, 0.915, 0.165, 0.085]]  # handwritten "MAIN ST, NEW..."
+
+[[photo]]
+file = "09-centennial"
+nbha = "NBHA photos143"
+url = "https://www.newbremenhistory.org/img/image-gallery/NBHA%20photos143.jpg"
+original = "1933 Centennial Parade."
+credit = "An ox-drawn covered wagon in the 1933 Centennial Parade."
+
+[[photo]]
+file = "10-speedway"
+nbha = "NBHA photos862"
+url = "https://www.newbremenhistory.org/img/image-gallery/NBHA%20photos862.jpg"
+original = "(no caption; New Bremen Speedway gallery)"
+credit = "A race car takes a turn in front of the grandstand at the New Bremen Speedway, early years."
+
+[[photo]]
+file = "11-today"
+nbha = "NBHA scenes 2018 32"
+url = "https://www.newbremenhistory.org/img/image-gallery/NBOscenes/NBHA%20scenes%202018%2032.JPG"
+original = "(no caption; Scenes around New Bremen gallery, 2018)"
+credit = "The restored canal and towpath trail, 2018."

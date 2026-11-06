@@ -11,33 +11,31 @@ The display copy lives in `index.html`. Facts and their sources are in
 
 ## Visual approach
 
-- **Most chapters:** a still painting with a slow camera move (zoom and drift)
-  and an ink-bleed reveal into the next chapter. This is all done in the
-  browser, so each chapter costs one image.
-- **Two video moments:** chapters 3 (canal boat entering Lock One) and 8 (the
-  interurban on Main Street) are candidates for short generated clips, scrubbed
-  by scroll. The page falls back to the still if a clip is missing.
-- **Style:** warm, fibrous paper; gray-green and sepia ink washes; soft
-  architectural edges; drifting mist; restrained color. Later chapters can warm
-  up (gaslight gold in 7, festival color in 9 and 10) but must still read as the
-  same painting.
+- **Real photographs only.** Each chapter shows one photo from the New Bremen
+  Historic Association's galleries, whole and uncropped, with its real date and
+  credit. It is rendered in ink tones with ordinary image filters, so nothing is
+  invented (see `production/photos.toml` and `scripts/build_photos.py`).
+- **On the page:** the photo sits like a print on the side opposite the text; on
+  phones it sits above the text. A slow camera move, then the next photo bleeds
+  in like ink spreading on wet paper.
+- **Paper:** warm cream mulberry paper with fibers, laid over everything.
 - **Markers:** a small red seal with the chapter's year, like a painter's chop.
 
 ## Chapters
 
-| # | Year | Title | Copy | Main composition | Transition into the next chapter |
-|---|------|-------|------|------------------|----------------------------------|
-| 1 | Before 1832 | The Divide | left | Flat wetland at dawn: reeds, standing water, a low rise. Two thin streams leave the rise in opposite directions. Mist over everything. | Mist thickens; the camera pushes through the reeds toward a clearing. |
-| 2 | 1832–1833 | Bremen in the Clearing | right | A small log hut in a partly cleared rise, chimney smoke, a covered wagon and a few figures, survey stakes in the ground. Forest edge behind. | Smoke drifts right and becomes the canal's mist. |
-| 3 | 1845 | The Canal Comes Through | left | A canal boat drawn by three mules in tandem on the towpath, approaching the wooden gates of Lock One. **Video candidate.** | The boat passes out of frame; the lock opens onto a busy bank. |
-| 4 | 1850 | A Canal Boomtown | right | Canal-side street: a two-story hotel, stacked barrels, a cooper's shop, a boat being loaded. Busy but small. | Ink spreads from the barrels across the bank. |
-| 5 | 1871 | Iron Rails | left | Quiet canal and empty towpath in the foreground; a small steam train crossing the far distance on a low embankment. | The train's smoke becomes cloud over two rooftops. |
-| 6 | 1875–1876 | Frogtown and Cheesequarters | bottom | High view down the canal, which splits two clusters of rooftops; a footbridge joins them. | Dusk falls; lamps begin to glow. |
-| 7 | 1888–1896 | Gaslight and an Opera House | right | Dusk street, gas flames in lamps, the Boesel Opera House with warm windows, a small crowd. First gold accents. | Glow from the windows spreads into morning light on Main Street. |
-| 8 | 1902–1931 | The Interurban | left | An electric interurban car on Main Street under its overhead wire, storefronts on both sides. **Video candidate.** | The car rolls out; bunting appears along the street. |
-| 9 | 1933 | The Centennial | right | Main Street in bunting and flags, a parade, crowds on the sidewalks. No lettering on banners. | Bunting and flags blur into the speedway crowd. |
-| 10 | 1930s–1970s | The Speedway | right | A 1930s open-wheel race car sliding through a dirt turn in front of a packed, covered grandstand (reference: NBHA #862). | Dust settles into mist over the canal. |
-| 11 | Today | Still on the Divide | bottom | Restored Lock One, the towpath trail under trees, a cyclist, festival lights far off. Same paper and ink as chapter 1. | End. The page's closing credits scroll over it. |
+| # | Year | Title | Copy | Photo |
+|---|------|-------|------|------------------|
+| 1 | Before 1832 | The Divide | left | Strawberry fields at the Walnut Hill Fruit Farm, 1909. The land is still this flat. |
+| 2 | 1832–1833 | Bremen in the Clearing | right | The Luelleman House, begun in 1837, now the association's museum. |
+| 3 | 1845 | The Canal Comes Through | left | The canal at Lock One, looking north, after 1904. |
+| 4 | 1850 | A Canal Boomtown | right | August Schneider and Henry Wiegman at their barrel shop, 1898. |
+| 5 | 1871 | Iron Rails | left | The New Bremen railroad depot, photographed in 1962. |
+| 6 | 1875–1876 | Frogtown and Cheesequarters | bottom | Looking south from St. Paul Church, about 1900. |
+| 7 | 1888–1896 | Gaslight and an Opera House | right | The crew installing natural gas lines to New Bremen, 1888. |
+| 8 | 1902–1931 | The Interurban | left | Looking north on Main Street from Monroe Street as a Western Ohio Railway car approaches, early 1900s. |
+| 9 | 1933 | The Centennial | right | An ox-drawn covered wagon in the 1933 Centennial Parade. |
+| 10 | 1930s–1970s | The Speedway | right | A race car takes a turn in front of the grandstand at the New Bremen Speedway, early years. |
+| 11 | Today | Still on the Divide | bottom | The restored canal and towpath trail, 2018. |
 
 ## Layout rules
 
@@ -49,11 +47,7 @@ The display copy lives in `index.html`. Facts and their sources are in
 - Copy is hidden during transitions. The opening title shows over chapter 1
   until the reader starts scrolling.
 
-## Production gates
+## Before publishing
 
-1. Approve this storyboard and the copy.
-2. Generate three style samples (chapters 1, 5 and 10) and approve the look.
-3. Generate the remaining stills.
-4. Decide on the two video moments and generate them from the approved stills.
-5. Ask the New Bremen Historic Association before publishing anything based on
-   their photos.
+1. Ask the New Bremen Historic Association for permission to show their photos.
+2. Check the open items at the bottom of sources.md.

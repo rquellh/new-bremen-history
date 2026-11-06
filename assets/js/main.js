@@ -7,6 +7,7 @@
 //   data-drift  "x y" camera drift across the chapter, as a fraction of the screen
 //   data-bleed  "x y" point the ink spreads from when this chapter arrives
 //   data-video  optional clip, scrubbed by scroll in place of the still
+//   data-fit    "contain" (default: the whole photo beside the text) or "cover"
 // and on each .copy, data-show="in out" in chapter progress (0..1).
 
 import { Stage, smooth } from './stage.js';
@@ -40,6 +41,9 @@ const scenes = chapterEls.map((el, index) => {
       sizes: img.getAttribute('sizes'),
     },
     video: el.dataset.video || null,
+    // "contain" lays the whole photo beside the text; "cover" fills the screen.
+    fit: el.dataset.fit || 'contain',
+    side: (el.querySelector('.copy:not(.opening)')?.className.match(/copy--(left|right|bottom|center)/) || [])[1] || 'left',
     copies: [...el.querySelectorAll('.copy')].map((node) => ({
       node,
       show: nums(node.dataset.show, '0.06 0.66'),

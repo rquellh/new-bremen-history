@@ -1,6 +1,6 @@
 # New Bremen History
 
-The history of New Bremen, Ohio, told as a scrolling ink-wash painting. Served at
+The history of New Bremen, Ohio, told as a scrolling ink-wash story in real photographs. Served at
 https://www.ryanquellhorst.com/new-bremen-history/ from the `main` branch.
 
 It's a static site: plain HTML, CSS and JavaScript, with no build step and no
@@ -11,10 +11,9 @@ dependencies beyond Google Fonts.
 - Each chapter in `index.html` is a `<section class="chapter">` holding its
   painting, its text, and settings in `data-` attributes (documented at the top
   of `assets/js/main.js`).
-- With JavaScript, the paintings are drawn on one fixed canvas
-  (`assets/js/stage.js`). Scrolling moves a slow camera across each painting,
-  then the next one bleeds in like ink on wet paper. A chapter can also have a
-  video clip that scroll scrubs, with its still painting as the fallback.
+- With JavaScript, the photos are drawn on one fixed canvas
+  (`assets/js/stage.js`), each laid whole on the page beside its text. Scrolling
+  moves a slow camera over it, then the next one bleeds in like ink on wet paper.
 - Without JavaScript, or with reduced motion, it reads as a plain illustrated
   article (reduced motion keeps the stage but swaps the ink and camera moves
   for simple cross-fades).
@@ -26,36 +25,32 @@ python3 -m http.server 8000
 # open http://localhost:8000/
 ```
 
-## Production
+## Images
 
-Planning lives in `production/`:
+Every image is a real photograph from the New Bremen Historic Association's
+galleries, shown whole with its date and credit. `scripts/build_photos.py`
+renders them in ink tones with ordinary image filters (`scripts/ink_photo.py`);
+nothing is generated or invented. Captions that were written on a photo are
+removed; real signs in the scene stay.
 
-- [storyboard.md](production/storyboard.md): the ten chapters, layout rules,
-  and the approval gates.
-- [sources.md](production/sources.md): every fact in the copy and where it came
+```sh
+uv venv .venv && uv pip install --python .venv/bin/python opencv-python-headless numpy pillow
+.venv/bin/python scripts/build_photos.py          # all chapters
+.venv/bin/python scripts/build_photos.py 03-canal # one chapter
+```
+
+Each chapter's photo, source URL, caption and any cleanup areas are in
+`production/photos.toml`. Originals are downloaded to `production/references/`,
+which is git-ignored: the photos are the association's, and the site must not
+be published until they give permission.
+
+## Production notes
+
+- [storyboard.md](production/storyboard.md): the chapters and layout rules.
+- [sources.md](production/sources.md): every fact in the text and where it came
   from, plus what was left out and why.
-- [image-prompts.md](production/image-prompts.md): draft prompts for the
-  paintings and the two video moments.
-
-The paintings are placeholders for now (`assets/art/placeholder/`, made by
-`scripts/make_placeholders.py`).
-
-### Adding a painting
-
-1. Save the approved master (16:9; 2560 x 1440 or larger is best, 1K works) to
-   `production/masters/`, for example `03-canal.png`. Masters are git-ignored.
-2. Run `python3 scripts/process_art.py production/masters/03-canal.png` (needs
-   `cwebp`). It writes 2560 and 1440 wide WebPs to `assets/art/`.
-3. Point the chapter's image at them; the script prints the markup to use.
-4. Update the image's `alt` text and, if the composition changed, the
-   chapter's `data-focus` and `data-bleed`.
-
-### Adding a video moment
-
-1. Generate the clip from the chapter's approved still as its first frame.
-2. Run `python3 scripts/normalize_clip.py generated.mp4 assets/video/03-canal.mp4`
-   (needs `ffmpeg`).
-3. Add `data-video="assets/video/03-canal.mp4" data-zoom="1 1"` to the chapter.
+- [ai-experiment/](production/ai-experiment/): an abandoned attempt at AI
+  paintings, and why it was dropped.
 
 ## Credits
 
