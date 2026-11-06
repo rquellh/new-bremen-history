@@ -12,19 +12,29 @@
 
 import { Stage, smooth } from './stage.js';
 
+/** @import { Scene } from './stage.js' */
+/**
+ * @typedef {Scene & {
+ *   el: HTMLElement, id: string, span: number, top: number, height: number,
+ *   copies: { node: HTMLElement, show: number[], o: number }[],
+ * }} Chapter
+ */
+
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const TRANSITION_VH = 0.9; // scroll length of each ink transition, in viewport heights
 const FADE = 0.06; // copy fade length, in chapter progress
 
+/** @param {string | undefined} value @param {string} fallback */
 const nums = (value, fallback) => (value || fallback).trim().split(/\s+/).map(Number);
 
-const chapterEls = [...document.querySelectorAll('.chapter')];
+const chapterEls = /** @type {HTMLElement[]} */ ([...document.querySelectorAll('.chapter')]);
 const railLinks = [...document.querySelectorAll('.rail a')];
 
-const scenes = chapterEls.map((el, index) => {
+// The stage adds each chapter's media, and measure() its copyTop.
+const scenes = /** @type {Chapter[]} */ (chapterEls.map((el, index) => {
   const img = el.querySelector('.art img');
   const span = Number(el.dataset.span || 3);
-  el.style.setProperty('--span', span);
+  el.style.setProperty('--span', /** @type {any} */ (span));
   return {
     index,
     el,
@@ -45,7 +55,7 @@ const scenes = chapterEls.map((el, index) => {
     // "contain" lays the whole photo beside the text; "cover" fills the screen.
     fit: el.dataset.fit || 'contain',
     side: (el.querySelector('.copy:not(.opening)')?.className.match(/copy--(left|right|bottom|center)/) || [])[1] || 'left',
-    copies: [...el.querySelectorAll('.copy')].map((node) => ({
+    copies: /** @type {HTMLElement[]} */ ([...el.querySelectorAll('.copy')]).map((node) => ({
       node,
       show: nums(node.dataset.show, '0.06 0.66'),
       o: -1,
@@ -53,9 +63,9 @@ const scenes = chapterEls.map((el, index) => {
     top: 0,
     height: 1,
   };
-});
+}));
 
-const stage = new Stage(document.querySelector('.stage'), scenes, { reduceMotion });
+const stage = new Stage(/** @type {HTMLCanvasElement} */ (document.querySelector('.stage')), scenes, { reduceMotion });
 
 // Phone layout (matches stage.js printBox): the photo runs full width, its
 // top just under the chapter dots, with the text right below it.
@@ -64,8 +74,9 @@ const PHOTO_TOP = 44; // px, clear of the chapter dots
 const PHOTO_GAP = 14; // px between the photo's faded edge and the text
 const PHOTO_SCALE = 1.22; // the photo is drawn this much wider than the screen
 
+/** @param {Chapter} s @param {HTMLElement} inner */
 function placeCopy(s, inner) {
-  const copy = inner.parentElement;
+  const copy = /** @type {HTMLElement} */ (inner.parentElement);
   const vw = window.innerWidth;
   const vh = window.innerHeight;
   let top = 0;
@@ -88,13 +99,14 @@ function measure() {
     s.height = r.height;
     // Top of the chapter's text panel on screen (it's fixed, so this ignores
     // scroll); phones place the photo just above it.
-    const inner = s.el.querySelector('.copy:not(.opening) .copy__inner');
+    const inner = /** @type {HTMLElement | null} */ (s.el.querySelector('.copy:not(.opening) .copy__inner'));
     if (inner) placeCopy(s, inner);
     s.copyTop = inner ? inner.offsetTop : 0;
   }
 }
 
 // Which chapter the top of the viewport is in, and how far through it.
+/** @param {number} y */
 function locate(y) {
   if (y <= scenes[0].top) return { index: 0, p: 0 };
   for (const s of scenes) {
@@ -103,6 +115,7 @@ function locate(y) {
   return { index: scenes.length - 1, p: 1 };
 }
 
+/** @param {number} y */
 function updateCopy(y) {
   for (const s of scenes) {
     const p = (y - s.top) / s.height;
@@ -112,7 +125,7 @@ function updateCopy(y) {
       o = Math.round(o * 1000) / 1000;
       if (o === c.o) continue;
       c.o = o;
-      c.node.style.opacity = o;
+      c.node.style.opacity = /** @type {any} */ (o);
       const shift = reduceMotion || o >= 1 ? 0 : (1 - o) * (p < (a + b) / 2 ? 14 : -14);
       c.node.style.transform = shift ? `translate3d(0, ${shift.toFixed(1)}px, 0)` : '';
       c.node.classList.toggle('is-visible', o > 0.01);
@@ -121,6 +134,7 @@ function updateCopy(y) {
 }
 
 let railIndex = -1;
+/** @param {number} index @param {number} p */
 function updateRail(index, p) {
   const s = scenes[index];
   const i = s.transition && p > 1 - s.transition / 2 ? index + 1 : index;
@@ -136,11 +150,13 @@ function updateRail(index, p) {
 
 // The stage eases toward the scroll position so wheel steps feel like a
 // brush moving, not a slideshow. Big jumps (chapter links) snap.
+/** @type {number | null} */
 let shown = null;
 let currentIndex = -1;
 let lastTime = 0;
 let rafId = 0;
 
+/** @param {number} now */
 function frame(now) {
   rafId = 0;
   const y = window.scrollY;
@@ -178,13 +194,14 @@ function onResize() {
   request();
 }
 
+/** @param {Chapter} s @param {ScrollBehavior} behavior */
 function scrollToScene(s, behavior) {
   const offset = s.index === 0 ? 0 : s.height * 0.12; // land where the copy is showing
   window.scrollTo({ top: s.top + offset, behavior });
 }
 
 document.addEventListener('click', (e) => {
-  const a = e.target.closest('a[href^="#"]');
+  const a = /** @type {Element} */ (e.target).closest('a[href^="#"]');
   if (!a) return;
   const s = scenes.find((sc) => `#${sc.id}` === a.getAttribute('href'));
   if (!s) return;

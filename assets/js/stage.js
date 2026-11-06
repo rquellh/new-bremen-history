@@ -8,21 +8,47 @@ const INK = [29, 35, 32];
 const FRINGE_ALPHA = 0.45; // darkness of the wet edge of the spreading ink
 const EDGE = 0.06; // softness of the ink edge, in field units
 
+/**
+ * A chapter as the stage sees it (main.js builds these).
+ * @typedef {object} Scene
+ * @property {number} index
+ * @property {number} transition share of the chapter spent bleeding into the next
+ * @property {number[]} focus
+ * @property {number[]} zoom
+ * @property {number[]} drift
+ * @property {number[]} bleed
+ * @property {{ aspect: number, src: string, srcset: string | null, sizes: string | null } | null} image
+ * @property {string | null} video
+ * @property {string} fit
+ * @property {string} side
+ * @property {number} [copyTop]
+ * @property {{ image: Picture | null, video: HTMLVideoElement | null, loading: boolean }} media
+ */
+/**
+ * A decoded photo, or an SVG rasterized to a canvas.
+ * @typedef {HTMLImageElement | (HTMLCanvasElement & { naturalWidth?: number, naturalHeight?: number })} Picture
+ */
+
 export class Stage {
+  /**
+   * @param {HTMLCanvasElement} canvas
+   * @param {Scene[]} scenes
+   * @param {{ reduceMotion?: boolean }} [options]
+   */
   constructor(canvas, scenes, { reduceMotion = false } = {}) {
     this.canvas = canvas;
-    this.ctx = canvas.getContext('2d', { alpha: false });
+    this.ctx = /** @type {CanvasRenderingContext2D} */ (canvas.getContext('2d', { alpha: false }));
     this.scenes = scenes;
     this.reduceMotion = reduceMotion;
     this.onChange = () => {};
 
     // Offscreen buffers: the incoming painting, its reveal mask, and the ink fringe.
     this.layer = document.createElement('canvas');
-    this.lctx = this.layer.getContext('2d');
+    this.lctx = /** @type {CanvasRenderingContext2D} */ (this.layer.getContext('2d'));
     this.mask = document.createElement('canvas');
-    this.mctx = this.mask.getContext('2d');
+    this.mctx = /** @type {CanvasRenderingContext2D} */ (this.mask.getContext('2d'));
     this.fringe = document.createElement('canvas');
-    this.fctx = this.fringe.getContext('2d');
+    this.fctx = /** @type {CanvasRenderingContext2D} */ (this.fringe.getContext('2d'));
 
     this.fields = new Map();
     this.last = null;
@@ -46,7 +72,9 @@ export class Stage {
     const mh = Math.max(2, Math.round((mw * H) / W));
     this.mask.width = this.fringe.width = mw;
     this.mask.height = this.fringe.height = mh;
+    /** @type {ImageData} */
     this.maskData = this.mctx.createImageData(mw, mh);
+    /** @type {ImageData} */
     this.fringeData = this.fctx.createImageData(mw, mh);
     const fd = this.fringeData.data;
     for (let j = 0; j < fd.length; j += 4) {
@@ -60,6 +88,7 @@ export class Stage {
   }
 
   // Load media near the current chapter and free what is far away.
+  /** @param {number} index */
   prepare(index) {
     this.scenes.forEach((s, j) => {
       const d = j - index;
@@ -70,6 +99,7 @@ export class Stage {
     if (next && !this.reduceMotion) idle(() => this.field(next));
   }
 
+  /** @param {Scene} s */
   load(s) {
     const m = s.media;
     if (s.image && !m.image && !m.loading) {
@@ -112,6 +142,7 @@ export class Stage {
     }
   }
 
+  /** @param {Scene} s */
   release(s) {
     const m = s.media;
     if (m.image instanceof HTMLCanvasElement) {
@@ -125,12 +156,14 @@ export class Stage {
     }
   }
 
+  /** @param {Scene} s */
   ready(s) {
     const { image, video } = s.media;
     return Boolean(image || (video && video.readyState >= 2));
   }
 
   // g is the story position: chapter index plus progress through it (0..1).
+  /** @param {number} g */
   render(g) {
     if (!this.dirty && g === this.last) return;
     this.dirty = false;
@@ -182,6 +215,7 @@ export class Stage {
   }
 
   // Draw a scene cover-fit, with its camera move at progress u (0..1).
+  /** @param {CanvasRenderingContext2D} ctx @param {Scene} s @param {number} u */
   draw(ctx, s, u) {
     ctx.imageSmoothingEnabled = true;
     ctx.imageSmoothingQuality = 'high';
@@ -257,6 +291,7 @@ export class Stage {
   // scene's bleed point, pushed around by warped noise so the ink creeps in
   // tendrils. Detail finer than a few mask pixels would turn into blocks when
   // the mask is scaled up, so the noise stays smooth at that scale.
+  /** @param {Scene} s */
   field(s) {
     let f = this.fields.get(s.index);
     if (f) return f;
@@ -291,6 +326,7 @@ export class Stage {
     return f;
   }
 
+  /** @param {Scene} s @param {number} t */
   paintMasks(s, t) {
     const f = this.field(s);
     const md = this.maskData.data;
@@ -309,6 +345,7 @@ export class Stage {
 // Where a photo sits on the page: opposite its chapter's text. On a tall
 // (phone) screen the text is a bottom panel, so the photo spans the width just
 // above it; its faded sides run slightly off the screen edges.
+/** @param {string} side @param {number} W @param {number} H @param {number} copyTop @param {number} px */
 function printBox(side, W, H, copyTop, px) {
   if (W / H < 1) {
     const top = 44 * px; // clear of the chapter dots
@@ -325,27 +362,32 @@ function printBox(side, W, H, copyTop, px) {
   return { x: W * 0.4, y: H * 0.08, w: W * 0.49, h: H * 0.84 };
 }
 
+/** @param {HTMLImageElement} img */
 function rasterize(img) {
   const c = document.createElement('canvas');
   c.width = img.naturalWidth;
   c.height = img.naturalHeight;
-  c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+  /** @type {CanvasRenderingContext2D} */ (c.getContext('2d')).drawImage(img, 0, 0, c.width, c.height);
   return c;
 }
 
+/** @type {(fn: () => void) => void} */
 const idle = window.requestIdleCallback
   ? (fn) => window.requestIdleCallback(fn, { timeout: 800 })
   : (fn) => setTimeout(fn, 120);
 
+/** @param {number} v @param {number} lo @param {number} hi */
 export function clamp(v, lo, hi) {
   return v < lo ? lo : v > hi ? hi : v;
 }
 
+/** @param {number} a @param {number} b @param {number} v */
 export function smooth(a, b, v) {
   const t = clamp((v - a) / (b - a), 0, 1);
   return t * t * (3 - 2 * t);
 }
 
+/** @param {number} ix @param {number} iy @param {number} seed */
 function hash(ix, iy, seed) {
   let h = Math.imul(ix, 374761393) ^ Math.imul(iy, 668265263) ^ Math.imul(seed, 2246822519);
   h = Math.imul(h ^ (h >>> 13), 1274126177);
@@ -353,6 +395,7 @@ function hash(ix, iy, seed) {
   return (h >>> 0) / 4294967296;
 }
 
+/** @param {number} x @param {number} y @param {number} seed */
 function vnoise(x, y, seed) {
   const ix = Math.floor(x);
   const iy = Math.floor(y);
@@ -367,6 +410,7 @@ function vnoise(x, y, seed) {
   return a + (b - a) * u + (c - a) * v + (a - b - c + d) * u * v;
 }
 
+/** @param {number} x @param {number} y @param {number} seed @param {number} octaves */
 function fbm(x, y, seed, octaves) {
   let sum = 0;
   let amp = 0.5;

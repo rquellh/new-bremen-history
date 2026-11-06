@@ -1,0 +1,21 @@
+{
+  // `npm run check`: type-checks the build scripts and the site's JavaScript.
+  // Nothing is compiled: Node runs the .ts scripts directly, and the site's .js
+  // is served as-is.
+  "compilerOptions": {
+    "target": "esnext",
+    "lib": ["esnext", "dom"],
+    "types": ["node"],
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "noEmit": true,
+    "strict": true,
+    "allowJs": true,
+    "checkJs": true,
+    "allowImportingTsExtensions": true,
+    "erasableSyntaxOnly": true,
+    "verbatimModuleSyntax": true,
+    "skipLibCheck": true
+  },
+  "include": ["scripts/*.ts", "assets/js/*.js"]
+}
