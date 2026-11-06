@@ -308,7 +308,7 @@ export class Stage {
 // (phone) screen the text is always a bottom panel, so the photo goes on top.
 function printBox(side, W, H) {
   if (W / H < 1) return { x: W * 0.04, y: H * 0.07, w: W * 0.92, h: H * 0.48 };
-  if (side === 'right') return { x: W * 0.04, y: H * 0.08, w: W * 0.56, h: H * 0.84 };
+  if (side === 'right') return { x: W * 0.04, y: H * 0.08, w: W * 0.52, h: H * 0.84 };
   if (side === 'bottom') return { x: W * 0.1, y: H * 0.05, w: W * 0.8, h: H * 0.56 };
   return { x: W * 0.4, y: H * 0.08, w: W * 0.54, h: H * 0.84 };
 }

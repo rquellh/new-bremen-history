@@ -17,6 +17,8 @@ opencv-python-headless numpy pillow
 """
 
 import argparse
+import html
+import re
 import sys
 import tomllib
 import urllib.request
@@ -33,12 +35,14 @@ CONFIG = ROOT / "production" / "photos.toml"
 ORIGINALS = ROOT / "production" / "references"
 PREVIEWS = ROOT / "production" / "masters" / "photos"
 ART = ROOT / "assets" / "art"
+PAGE = ROOT / "index.html"
 WIDTHS = (2048, 1280)
 QUALITY = 82
 
 
 def fetch(photo: dict) -> Path:
-    dest = ORIGINALS / f"{photo['file']}.jpg"
+    slug = photo["nbha"].lower().replace("nbha", "").replace("photos", "").strip().replace(" ", "-")
+    dest = ORIGINALS / f"{photo['file']}--nbha-{slug}.jpg"
     if not dest.exists():
         req = urllib.request.Request(photo["url"], headers={"User-Agent": "new-bremen-history-build/1.0"})
         dest.write_bytes(urllib.request.urlopen(req, timeout=60).read())
@@ -76,6 +80,36 @@ def build(photo: dict) -> None:
         out = ART / f"{photo['file']}-{width}.webp"
         cv2.imwrite(str(out), img, [cv2.IMWRITE_WEBP_QUALITY, QUALITY])
         print(f"  {out.relative_to(ROOT)}  {width}x{height}  {out.stat().st_size // 1024} KB")
+    sync_page(photo, inked.shape[1], inked.shape[0])
+
+
+def sync_page(photo: dict, width: int, height: int) -> None:
+    """Point the chapter's image, alt text, caption and credit in index.html at this photo."""
+    page = PAGE.read_text(encoding="utf-8")
+    f = photo["file"]
+    credit = html.escape(photo["credit"], quote=True).replace("&#x27;", "&rsquo;")
+    lazy = 'fetchpriority="high"' if f.startswith("01") else 'loading="lazy"'
+    figure = (
+        f'<figure class="art">\n        <img src="assets/art/{f}-1280.webp" '
+        f'srcset="assets/art/{f}-1280.webp 1280w, assets/art/{f}-2048.webp 2048w" '
+        f'sizes="(max-width: 720px) 100vw, 60vw" width="{width}" height="{height}" {lazy}\n'
+        f'             alt="Photograph: {credit}">\n'
+        f'        <figcaption>{credit} New Bremen Historic Association.</figcaption>\n      </figure>'
+    )
+    fig_re = re.compile(r'<figure class="art">\s*<img src="assets/art/' + re.escape(f) + r'-1280\.webp".*?</figure>', re.S)
+    page, n = fig_re.subn(lambda m: figure, page, count=1)
+    if n != 1:
+        print(f"  index.html: no figure found for {f}; left unchanged", file=sys.stderr)
+        return
+    # The credit line in the same chapter: the first one after this figure.
+    start = page.index(figure)
+    credit_re = re.compile(r'<p class="credit">Photo: .*?</p>', re.S)
+    m = credit_re.search(page, start)
+    if m:
+        new = f'<p class="credit">Photo: {credit} <span>New Bremen Historic Association</span></p>'
+        page = page[: m.start()] + new + page[m.end() :]
+    PAGE.write_text(page, encoding="utf-8")
+    print("  index.html updated")
 
 
 def main() -> int:
