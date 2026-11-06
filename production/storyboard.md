@@ -24,18 +24,18 @@ The display copy lives in `index.html`. Facts and their sources are in
 
 | # | Year | Title | Copy | Photo |
 |---|------|-------|------|------------------|
-| 1 | Before 1832 | The Divide | left | Strawberry fields at the Walnut Hill Fruit Farm, 1909. The land is still this flat. |
-| 2 | 1832–1833 | Bremen in the Clearing | right | The Luelleman House, begun in 1837, now the association's museum. |
+| 1 | Before 1832 | The Divide | left | Strawberry fields at the Walnut Hill Fruit Farm, 1909. |
+| 2 | 1832–1833 | Bremen in the Clearing | right | Drawing: The Luelleman House, built about 1837. |
 | 3 | 1845 | The Canal Comes Through | left | The canal at Lock One, looking north, after 1904. |
-| 4 | 1850 | A Canal Boomtown | right | August Schneider and Henry Wiegman at their barrel shop, 1898. |
-| 5 | 1871 | Iron Rails | left | The New Bremen railroad depot, photographed in 1962. |
+| 4 | 1850 | A Canal Boomtown | right | August Schneider and Henry Wiegman at a barrel shop, 1898. |
+| 5 | 1871 | Iron Rails | left | The New Bremen railroad depot, 1962. |
 | 6 | 1875–1876 | Frogtown and Cheesequarters | bottom | Looking south from St. Paul Church, about 1900. |
-| 7 | 1888–1896 | Gaslight and an Opera House | right | The crew installing natural gas lines to New Bremen, 1888. |
-| 8 | 1902–1931 | The Interurban | left | Looking north on Main Street from Monroe Street as a Western Ohio Railway car approaches, early 1900s. |
-| 9 | 1930s–1970s | The Speedway | right | A race car takes a turn in front of the grandstand at the New Bremen Speedway, early years. |
+| 7 | 1888–1896 | Gaslight and an Opera House | right | A play on the opera house stage, early 1900s. |
+| 8 | 1902–1931 | The Interurban | left | Looking north from Monroe Street as a Western Ohio Railway car approaches, early 1900s. |
+| 9 | 1930s–1970s | The Speedway | right | A race car passes the covered grandstand at the New Bremen Speedway. |
 | 10 | 1933 | The Centennial | left | An ox-drawn covered wagon in the 1933 Centennial Parade. |
-| 11 | 1945 | Crown | right | Crown's former antenna rotator plant, once Rabe Hardware, in the 1970s. |
-| 12 | 1968–1976 | Saving the Story | left | The Luelleman House, now the association's museum, in 2024. |
+| 11 | 1945 | Crown | right | Crown's former antenna rotator plant, in the old Rabe Hardware Store building, 1970s. |
+| 12 | 1968–1976 | Saving the Story | left | The Luelleman House, now the association's museum, 2024. |
 | 13 | Since the mid-1970s | Bremenfest | right | A band plays in the gazebo of a Bremenfest float carrying the 1975 Bremenfest queen. |
 | 14 | Today | The Story Continues | bottom | The canal through the middle of town, with the Crown Pavilion beside it, 2019. |
 

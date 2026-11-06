@@ -25,7 +25,9 @@ written in our own words; facts are not copyrightable, but the photos and the
   town; water to the north drains to Lake Erie, to the south to the Ohio River. (CAN, WIKI)
 - The site was at the edge of the Great Black Swamp. (SET)
 - The Auglaize Trail was a Native trading path and portage between the Miami and
-  St. Marys rivers. (CAN)
+  St. Marys rivers; CAN calls it "that oft-used portage across the divide along the old
+  Auglaize Trail and near the site of the future New Bremen", hence "crossed the divide
+  nearby". (CAN)
 
 ### 2. Bremen in the Clearing
 - 1832: a company of 33 members formed in Cincinnati. (SET, WIKI)
@@ -36,6 +38,9 @@ written in our own words; facts are not copyrightable, but the photos and the
 - June 11, 1833: the plat of "Bremen" recorded at St. Marys; 102 lots, one per
   member, the rest sold for $25. (SET, CHR, CAN)
 - 1835: post office opens and the name becomes New Bremen. (CHR, SET, CAN)
+- Image: NBHA photos1083 is a drawing, not a photograph, so its credit and alt text say
+  "Drawing" (`kind = "drawing"` in photos.toml). NBHA's caption says "begun in 1837"; NBHA
+  says "believed built about 1837", so the credit says "built about 1837".
 
 ### 3. The Canal Comes Through
 - The canal reached New Bremen in 1845; the whole canal ran about 250 miles,
@@ -70,7 +75,8 @@ written in our own words; facts are not copyrightable, but the photos and the
 ### 8. The Interurban
 - Western Ohio Railway: first car April 21, 1902. (SET)
 - Cars ran on Main Street. (GAL caption, Wietholter print subject)
-- Abandoned 1931. (CHR, SET)
+- Abandoned 1931. (CHR, SET) An NBHA gallery caption says it ran "from 1902 to 1932"; the
+  copy follows the centennial book.
 
 ### 9. The Speedway
 - **PROG**: Official 1968 New Bremen Speedway Program, in the NBHA speedway gallery.
@@ -93,8 +99,8 @@ written in our own words; facts are not copyrightable, but the photos and the
 - **WIKI-C**: https://en.wikipedia.org/wiki/Crown_Equipment_Corporation (Crown's own
   history pages returned 404 when checked, 2026-11-05).
 - **CROWN**: https://www.crown.com/en-us/about-us.html (via search summary).
-- The company made temperature controls for coal-burning furnaces in the 1920s; in 1945
-  it became Crown Controls. (WIKI-C)
+- The company made temperature controls for coal-burning furnaces in the 1920s as the
+  Pioneer Heat Regulator Company; in 1945 it became Crown Controls. (WIKI-C)
 - Founders: WIKI-C names Carl and Allen Dicke and Carl's son Jim; CROWN credits brothers
   Carl H. and Allen A. Dicke. The copy says "the Dicke family".
 - TV antenna rotators from 1949 (made until 2000). (WIKI-C)
@@ -117,7 +123,8 @@ written in our own words; facts are not copyrightable, but the photos and the
     sad loss of the Thompson Hotel and Livery at Lock 1".
   - October 3, 1973: motion passed to form the association ("within a week").
   - The Luelleman House: "one of the first non-log-cabin structures in the original plat
-    of 1833", believed built about 1837; bought with pledges (initial price $15,500).
+    of 1833", believed built about 1837; bought with pledges (initial price $15,500). The
+    copy says "one of the first houses in town not built of logs".
   - Museum dedicated July 4, 1976, "as the United States celebrated its 200th birthday",
     "completely paid for by pledges".
   - Don't repeat the page's "35th anniversary of this dedication" line (2008); the

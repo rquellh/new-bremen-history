@@ -88,12 +88,14 @@ def sync_page(photo: dict, width: int, height: int) -> None:
     page = PAGE.read_text(encoding="utf-8")
     f = photo["file"]
     credit = html.escape(photo["credit"], quote=True).replace("&#x27;", "&rsquo;")
+    kind = photo.get("kind", "photograph")  # or "drawing"
+    label = "Drawing" if kind == "drawing" else "Photo"
     lazy = 'fetchpriority="high"' if f.startswith("01") else 'loading="lazy"'
     figure = (
         f'<figure class="art">\n        <img src="assets/art/{f}-1280.webp" '
         f'srcset="assets/art/{f}-1280.webp 1280w, assets/art/{f}-2048.webp 2048w" '
         f'sizes="(max-width: 720px) 100vw, 60vw" width="{width}" height="{height}" {lazy}\n'
-        f'             alt="Photograph: {credit}">\n'
+        f'             alt="{kind.capitalize()}: {credit}">\n'
         f'        <figcaption>{credit} New Bremen Historic Association.</figcaption>\n      </figure>'
     )
     fig_re = re.compile(r'<figure class="art">\s*<img src="assets/art/' + re.escape(f) + r'-1280\.webp".*?</figure>', re.S)
@@ -103,10 +105,10 @@ def sync_page(photo: dict, width: int, height: int) -> None:
         return
     # The credit line in the same chapter: the first one after this figure.
     start = page.index(figure)
-    credit_re = re.compile(r'<p class="credit">Photo: .*?</p>', re.S)
+    credit_re = re.compile(r'<p class="credit">(?:Photo|Drawing): .*?</p>', re.S)
     m = credit_re.search(page, start)
     if m:
-        new = f'<p class="credit">Photo: {credit} <span>New Bremen Historic Association</span></p>'
+        new = f'<p class="credit">{label}: {credit} <span>New Bremen Historic Association</span></p>'
         page = page[: m.start()] + new + page[m.end() :]
     PAGE.write_text(page, encoding="utf-8")
     print("  index.html updated")
