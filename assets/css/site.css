@@ -101,31 +101,8 @@ h2 {
   text-wrap: balance;
 }
 
-.copy p:not(.kicker):not(.eyebrow):not(.lede):not(.cue):not(.seal) { color: var(--ink-soft); }
+.copy p:not(.kicker):not(.eyebrow):not(.lede):not(.cue) { color: var(--ink-soft); }
 
-/* A painter's seal: the chapter year stamped in red. */
-.seal {
-  display: inline-grid;
-  place-items: center;
-  width: 2.7rem;
-  height: 2.7rem;
-  margin: 0 0 1.1rem;
-  padding: 0.28rem 0;
-  font-family: var(--display);
-  font-weight: 600;
-  font-size: 1.02rem;
-  line-height: 0.95;
-  color: var(--seal-ink);
-  background:
-    radial-gradient(circle at 30% 25%, rgb(255 255 255 / 0.12), transparent 45%),
-    radial-gradient(circle at 75% 80%, rgb(0 0 0 / 0.14), transparent 50%),
-    var(--seal);
-  border-radius: 3px 4px 2px 5px;
-  box-shadow: inset 0 0 0 2px rgb(247 239 225 / 0.18);
-  transform: rotate(-3deg);
-}
-.seal span { display: block; }
-.seal--small { width: 2.3rem; height: 2.3rem; font-size: 1rem; }
 
 /* ---------- Without JS: a plain illustrated article ---------- */
 
@@ -357,14 +334,11 @@ h2 {
   position: relative;
   z-index: 5;
   padding: 40vh var(--gutter) 5rem;
-  background:
-    url("../paper-fibers.svg") 0 0 / 900px 900px,
-    linear-gradient(to bottom, rgb(239 231 214 / 0), var(--paper) 36vh);
+  background: linear-gradient(to bottom, rgb(239 231 214 / 0), var(--paper) 36vh);
 }
 .colophon__inner { max-width: 36rem; margin-inline: auto; }
 .colophon h2 { font-size: clamp(2rem, 3.4vw, 2.8rem); }
 .colophon p { color: var(--ink-soft); }
-.colophon .seal { color: var(--seal-ink); }
 .colophon .fine { font-size: 0.9rem; color: var(--ink-faint); margin-top: 1.6rem; }
 .colophon .top {
   display: inline-block;
@@ -410,7 +384,6 @@ h2 {
     background: linear-gradient(to top, rgb(239 231 214 / 0.95) 60%, rgb(239 231 214 / 0));
   }
 
-  .js .seal { width: 2.3rem; height: 2.3rem; font-size: 0.9rem; margin-bottom: 0.8rem; }
 
   /* The rail becomes a row of dots along the top edge, clear of the text. */
   .js .rail {
