@@ -359,6 +359,9 @@ h2 {
   .js .copy--right .copy__inner,
   .js .copy--bottom .copy__inner { display: block; max-width: 32rem; width: 100%; }
   .js .copy--bottom h2 { margin-bottom: 0.45em; }
+  /* When the photo and text both fit, the text follows the photo down from
+     the top and any spare room falls below it (main.js sets these). */
+  .js .copy.is-top { align-items: flex-start; padding-top: var(--copy-top, 0px); }
 
   /* The photo sits above the text here, not behind it, so no paper wash. */
   .js .copy--left::before,
@@ -379,6 +382,13 @@ h2 {
   .rail ol { grid-auto-flow: column; gap: 0; }
   .js .rail span { display: none; }
   .js .rail a { padding: 0.45rem 0.4rem; }
+}
+
+/* Short phone screens (or a phone browser with its toolbars showing): smaller
+   text leaves room for the photo above it. */
+@media (max-width: 720px) and (max-height: 760px) {
+  body { font-size: 0.9rem; line-height: 1.5; }
+  h2 { font-size: 1.8rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

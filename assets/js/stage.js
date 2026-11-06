@@ -313,7 +313,8 @@ function printBox(side, W, H, copyTop, px) {
   if (W / H < 1) {
     const top = 44 * px; // clear of the chapter dots
     const bottom = copyTop ? copyTop - 14 * px : H * 0.55;
-    return { x: -W * 0.11, y: top, w: W * 1.22, h: Math.max(H * 0.2, bottom - top), anchorBottom: true };
+    // Never taller than the space above the text, so it can't cover it.
+    return { x: -W * 0.11, y: top, w: W * 1.22, h: Math.max(H * 0.06, bottom - top), anchorBottom: true };
   }
   if (side === 'right') return { x: W * 0.04, y: H * 0.08, w: W * 0.52, h: H * 0.84 };
   if (side === 'bottom') {

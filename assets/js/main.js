@@ -36,6 +36,7 @@ const scenes = chapterEls.map((el, index) => {
     drift: nums(el.dataset.drift, '0 0'),
     bleed: nums(el.dataset.bleed, '0.5 0.5'),
     image: img && {
+      aspect: Number(img.getAttribute('height')) / Number(img.getAttribute('width')) || 0.7,
       src: img.getAttribute('src'),
       srcset: img.getAttribute('srcset'),
       sizes: img.getAttribute('sizes'),
@@ -56,6 +57,30 @@ const scenes = chapterEls.map((el, index) => {
 
 const stage = new Stage(document.querySelector('.stage'), scenes, { reduceMotion });
 
+// Phone layout (matches stage.js printBox): the photo runs full width, its
+// top just under the chapter dots, with the text right below it.
+const phone = window.matchMedia('(max-width: 720px)');
+const PHOTO_TOP = 44; // px, clear of the chapter dots
+const PHOTO_GAP = 14; // px between the photo's faded edge and the text
+const PHOTO_SCALE = 1.22; // the photo is drawn this much wider than the screen
+
+function placeCopy(s, inner) {
+  const copy = inner.parentElement;
+  const vw = window.innerWidth;
+  const vh = window.innerHeight;
+  let top = 0;
+  if (phone.matches && vw < vh && s.image) {
+    // If the photo at full width plus the text fit on screen, start the text
+    // under the photo and leave the spare room at the bottom. Otherwise the
+    // text stays at the bottom and the photo shrinks to fit above it.
+    const textTop = PHOTO_TOP + vw * PHOTO_SCALE * s.image.aspect + PHOTO_GAP;
+    const bottomPad = parseFloat(getComputedStyle(copy).paddingBottom) || 24;
+    if (textTop + inner.offsetHeight + bottomPad <= vh) top = textTop;
+  }
+  copy.classList.toggle('is-top', top > 0);
+  copy.style.setProperty('--copy-top', `${Math.round(top)}px`);
+}
+
 function measure() {
   for (const s of scenes) {
     const r = s.el.getBoundingClientRect();
@@ -64,6 +89,7 @@ function measure() {
     // Top of the chapter's text panel on screen (it's fixed, so this ignores
     // scroll); phones place the photo just above it.
     const inner = s.el.querySelector('.copy:not(.opening) .copy__inner');
+    if (inner) placeCopy(s, inner);
     s.copyTop = inner ? inner.offsetTop : 0;
   }
 }
