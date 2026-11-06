@@ -1,6 +1,6 @@
 # New Bremen History
 
-The history of New Bremen, Ohio, told as a scrolling ink-wash story in real photographs. Served at
+The history of New Bremen, Ohio, told as a scrolling story in real photographs. Served at
 https://www.ryanquellhorst.com/new-bremen-history/ from the `main` branch.
 
 It's a static site: plain HTML, CSS and JavaScript, with no build step and no
@@ -9,7 +9,7 @@ dependencies beyond Google Fonts.
 ## How it works
 
 - Each chapter in `index.html` is a `<section class="chapter">` holding its
-  painting, its text, and settings in `data-` attributes (documented at the top
+  photo, its text, and settings in `data-` attributes (documented at the top
   of `assets/js/main.js`).
 - With JavaScript, the photos are drawn on one fixed canvas
   (`assets/js/stage.js`), each laid whole on the page beside its text. Scrolling
