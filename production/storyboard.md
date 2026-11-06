@@ -1,6 +1,6 @@
 # Storyboard
 
-A scroll-driven ink-wash history of New Bremen, Ohio, in eleven chapters. One fixed
+A scroll-driven ink-wash history of New Bremen, Ohio, in fourteen chapters. One fixed
 full-screen stage shows a painting per chapter; scrolling moves a slow camera
 across it, then the next painting bleeds in like ink spreading on wet paper. Text
 sits in the painting's empty space and fades out before each transition.
@@ -32,9 +32,12 @@ The display copy lives in `index.html`. Facts and their sources are in
 | 6 | 1875–1876 | Frogtown and Cheesequarters | bottom | Looking south from St. Paul Church, about 1900. |
 | 7 | 1888–1896 | Gaslight and an Opera House | right | The crew installing natural gas lines to New Bremen, 1888. |
 | 8 | 1902–1931 | The Interurban | left | Looking north on Main Street from Monroe Street as a Western Ohio Railway car approaches, early 1900s. |
-| 9 | 1933 | The Centennial | right | An ox-drawn covered wagon in the 1933 Centennial Parade. |
-| 10 | 1930s–1970s | The Speedway | right | A race car takes a turn in front of the grandstand at the New Bremen Speedway, early years. |
-| 11 | Today | The Story Continues | bottom | The restored canal and towpath trail, 2018. |
+| 9 | 1930s–1970s | The Speedway | right | A race car takes a turn in front of the grandstand at the New Bremen Speedway, early years. |
+| 10 | 1933 | The Centennial | left | An ox-drawn covered wagon in the 1933 Centennial Parade. |
+| 11 | 1945 | Crown | right | Crown's Plant 3 and the fields around it, 1968. |
+| 12 | 1968–1976 | Saving the Story | left | The Luelleman House, now the association's museum, in 2024. |
+| 13 | Since the mid-1970s | Bremenfest | right | A band plays in the gazebo of a Bremenfest float carrying the 1975 Bremenfest queen. |
+| 14 | Today | The Story Continues | bottom | The restored canal and towpath trail, 2018. |
 
 ## Layout rules
 

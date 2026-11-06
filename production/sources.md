@@ -72,11 +72,7 @@ written in our own words; facts are not copyrightable, but the photos and the
 - Cars ran on Main Street. (GAL caption, Wietholter print subject)
 - Abandoned 1931. (CHR, SET)
 
-### 9. The Centennial
-- Centennial celebration July 1–4, 1933. (CHR)
-- The centennial book's histories are by C. A. Schrage and W. W. Grothaus. (CHR, SET)
-
-### 10. The Speedway
+### 9. The Speedway
 - **PROG**: Official 1968 New Bremen Speedway Program, in the NBHA speedway gallery.
   https://newbremenhistory.org/en/content/111-new-bremen-speedway
 - Racing at the New Bremen Speedway in the early 1930s. (GAL captions: "At the New Bremen
@@ -89,13 +85,64 @@ written in our own words; facts are not copyrightable, but the photos and the
 - Racing ended in the 1970s. (GAL caption: "Last days of racing in the 1970's.")
 - Left out: the 1931 riot and fire.
 
-### 11. The Story Continues
-- Lock One restored; towpath trail. (CAN, WIKI) Restoration and canal cleaning in June 2006.
-  (GAL 2001–present captions)
-- Bremenfest since 1975. (HOME)
-- NBHA founded 1973. (NBHA)
+### 10. The Centennial
+- Centennial celebration July 1–4, 1933. (CHR)
+- The centennial book's histories are by C. A. Schrage and W. W. Grothaus. (CHR, SET)
+
+### 11. Crown
+- **WIKI-C**: https://en.wikipedia.org/wiki/Crown_Equipment_Corporation (Crown's own
+  history pages returned 404 when checked, 2026-11-05).
+- **CROWN**: https://www.crown.com/en-us/about-us.html (via search summary).
+- The company made temperature controls for coal-burning furnaces in the 1920s; in 1945
+  it became Crown Controls. (WIKI-C)
+- Founders: WIKI-C names Carl and Allen Dicke and Carl's son Jim; CROWN credits brothers
+  Carl H. and Allen A. Dicke. The copy says "the Dicke family".
+- TV antenna rotators from 1949 (made until 2000). (WIKI-C)
+- First lift truck: 1956 per WIKI-C, 1957 (the LT-500) per encyclopedia.com. The copy says
+  "the late 1950s".
+- About 20,900 employees; privately held; Jim Dicke II CEO and Jim Dicke III president;
+  headquarters in New Bremen; fifth-largest lift truck maker (Modern Materials Handling,
+  2022). (WIKI-C) The copy says "one of the largest" and "more than 20,000".
+- Photo: NBHA photos960, "Crown – plant #3 in 1968."
+
+### 12. Saving the Story
+- **THOMPSON**: https://newbremenhistory.org/en/content/20-the-thompson-house (citing
+  The Evening Leader, 1968): the livery stable was razed from Feb 25, 1968; the lock
+  tender's house, which "also served as a hotel for the boatmen", was burned in April 1968;
+  the land went to the village for a Lions Club park. The copy says only that they "came
+  down ... to make room for a park"; the burning (a fire-training exercise) is left out.
+- **NBHA**: https://newbremenhistory.org/en/content/77-new-bremen-historic-association
+  - Backyard gathering "on the evening of Thursday, September 27, 1973", discussing "the
+    sad loss of the Thompson Hotel and Livery at Lock 1".
+  - October 3, 1973: motion passed to form the association ("within a week").
+  - The Luelleman House: "one of the first non-log-cabin structures in the original plat
+    of 1833", believed built about 1837; bought with pledges (initial price $15,500).
+  - Museum dedicated July 4, 1976, "as the United States celebrated its 200th birthday",
+    "completely paid for by pledges".
+  - Don't repeat the page's "35th anniversary of this dedication" line (2008); the
+    arithmetic matches the founding, not the dedication.
+- Photo: NBHA museums gallery, Luelleman House, 2024.
+
+### 13. Bremenfest
+- First year: the village says "Bremenfest began in 1974"
+  (https://newbremen.com/festivals/); the NBHA says 1975 (home page and Bremenfest
+  gallery). The 2026 schedule calls it the "51st Annual Bremenfest Parade". The copy says
+  "the mid-1970s".
+- Held every August ("third weekend of August", village); 2026 ran Aug 13-16, four days.
+  (https://bremenfest.com/schedule-2/)
+- Parade, food tents, live bands, pageants (Little Miss and Miss Bremenfest), car show,
+  5K, bed races, duck races. (village page, 2026 schedule) Duck race on the canal, 2004.
+  (GAL 2001-present caption)
+- Photo: NBHA Bremenfest gallery, slide 015 (uncaptioned). A sign on the float reads
+  "1975 Bremenfest Queen"; the banner reads "Bremenfest, August 25-26-27, New Bremen". The
+  festival year isn't stated, so the credit only describes what's shown.
+
+### 14. The Story Continues
+- Lock One restoration and canal cleaning, June 2006. (GAL 2001-present captions)
+- Towpath trail. (CAN, WIKI)
 - Population 3,034 in 2020. (WIKI)
 - Crown Equipment world headquarters; Bicycle Museum of America. (WIKI)
+- NBHA museum on North Main Street. (NBHA)
 
 ## Left out on purpose
 
@@ -111,5 +158,4 @@ written in our own words; facts are not copyrightable, but the photos and the
 
 ## To verify before publishing
 
-- Bremenfest's month (copy says "every year", not a season).
 - NBHA's museum houses: Pape House (1865) and Luelleman House (1837); addresses.

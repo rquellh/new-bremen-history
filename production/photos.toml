@@ -24,7 +24,7 @@ file = "02-clearing"
 nbha = "NBHA photos1083"
 url = "https://www.newbremenhistory.org/img/image-gallery/NBHA%20photos1083.jpg"
 original = "The Luelleman House, begun in 1837."
-credit = "The Luelleman House, begun in 1837, now the association's museum."
+credit = "The Luelleman House, begun in 1837."
 
 [[photo]]
 file = "03-canal"
@@ -71,21 +71,42 @@ credit = "Looking north on Main Street from Monroe Street as a Western Ohio Rail
 clean = [[0.105, 0.915, 0.165, 0.085]]  # handwritten "MAIN ST, NEW..."
 
 [[photo]]
-file = "09-centennial"
-nbha = "NBHA photos143"
-url = "https://www.newbremenhistory.org/img/image-gallery/NBHA%20photos143.jpg"
-original = "1933 Centennial Parade."
-credit = "An ox-drawn covered wagon in the 1933 Centennial Parade."
-
-[[photo]]
-file = "10-speedway"
+file = "09-speedway"
 nbha = "NBHA photos862"
 url = "https://www.newbremenhistory.org/img/image-gallery/NBHA%20photos862.jpg"
 original = "(no caption; New Bremen Speedway gallery)"
 credit = "A race car takes a turn in front of the grandstand at the New Bremen Speedway, early years."
 
 [[photo]]
-file = "11-today"
+file = "10-centennial"
+nbha = "NBHA photos143"
+url = "https://www.newbremenhistory.org/img/image-gallery/NBHA%20photos143.jpg"
+original = "1933 Centennial Parade."
+credit = "An ox-drawn covered wagon in the 1933 Centennial Parade."
+
+[[photo]]
+file = "11-crown"
+nbha = "NBHA photos960"
+url = "https://www.newbremenhistory.org/img/image-gallery/NBHA%20photos960.jpg"
+original = "Crown – plant #3 in 1968."
+credit = "Crown's Plant 3 and the fields around it, 1968."
+
+[[photo]]
+file = "12-saving"
+nbha = "Luelleman House-2024"
+url = "https://www.newbremenhistory.org/img/image-gallery/NBHA-Museums/Luellman-House-2024-2.jpg"
+original = "Luelleman House photo taken in 2024 with the historical marker plaque."
+credit = "The Luelleman House, now the association's museum, in 2024."
+
+[[photo]]
+file = "13-bremenfest"
+nbha = "NBHA slides015"
+url = "https://www.newbremenhistory.org/img/image-gallery/bremenfest/NBHA%20slides015.jpg"
+original = "(no caption; Bremenfest gallery slide)"
+credit = "A band plays in the gazebo of a Bremenfest float carrying the 1975 Bremenfest queen."
+
+[[photo]]
+file = "14-today"
 nbha = "NBHA scenes 2018 32"
 url = "https://www.newbremenhistory.org/img/image-gallery/NBOscenes/NBHA%20scenes%202018%2032.JPG"
 original = "(no caption; Scenes around New Bremen gallery, 2018)"
