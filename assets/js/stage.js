@@ -221,13 +221,15 @@ export class Stage {
       // a print. Its ink-treated edges already fade into the paper.
       ctx.fillStyle = PAPER;
       ctx.fillRect(0, 0, W, H);
-      const box = printBox(s.side, W, H);
+      const px = W / window.innerWidth; // CSS px to canvas px
+      const box = printBox(s.side, W, H, s.copyTop ? s.copyTop * px : 0, px);
       const z = this.reduceMotion ? 1 : z0 + (z1 - z0) * e;
       const scale = Math.min(box.w / sw, box.h / sh) * Math.min(z, 1.06);
       const dw = sw * scale;
       const dh = sh * scale;
       let x = box.x + (box.w - dw) / 2;
-      let y = box.y + (box.h - dh) / 2;
+      // Phones: rest the photo on the text below it. Elsewhere: center it.
+      let y = box.anchorBottom ? box.y + box.h - dh : box.y + (box.h - dh) / 2;
       if (!this.reduceMotion) {
         x += s.drift[0] * W * e;
         y += s.drift[1] * H * e;
@@ -305,12 +307,17 @@ export class Stage {
 }
 
 // Where a photo sits on the page: opposite its chapter's text. On a tall
-// (phone) screen the text is always a bottom panel, so the photo goes on top.
-function printBox(side, W, H) {
-  if (W / H < 1) return { x: W * 0.04, y: H * 0.07, w: W * 0.92, h: H * 0.48 };
+// (phone) screen the text is a bottom panel, so the photo spans the width just
+// above it; its faded sides run slightly off the screen edges.
+function printBox(side, W, H, copyTop, px) {
+  if (W / H < 1) {
+    const top = 44 * px; // clear of the chapter dots
+    const bottom = copyTop ? copyTop - 14 * px : H * 0.55;
+    return { x: -W * 0.11, y: top, w: W * 1.22, h: Math.max(H * 0.2, bottom - top), anchorBottom: true };
+  }
   if (side === 'right') return { x: W * 0.04, y: H * 0.08, w: W * 0.52, h: H * 0.84 };
   if (side === 'bottom') return { x: W * 0.1, y: H * 0.05, w: W * 0.8, h: H * 0.56 };
-  return { x: W * 0.4, y: H * 0.08, w: W * 0.54, h: H * 0.84 };
+  return { x: W * 0.4, y: H * 0.08, w: W * 0.49, h: H * 0.84 };
 }
 
 function rasterize(img) {

@@ -360,18 +360,13 @@ h2 {
   .js .copy--bottom .copy__inner { display: block; max-width: 32rem; width: 100%; }
   .js .copy--bottom h2 { margin-bottom: 0.45em; }
 
+  /* The photo sits above the text here, not behind it, so no paper wash. */
   .js .copy--left::before,
-  .js .copy--right::before {
-    background: linear-gradient(to top, rgb(239 231 214 / 0.95) 0%, rgb(239 231 214 / 0.8) 30%, rgb(239 231 214 / 0) 60%);
-  }
-
+  .js .copy--right::before,
+  .js .copy--bottom::before,
   .js .copy--left .copy__inner::before,
   .js .copy--right .copy__inner::before,
-  .js .copy--bottom .copy__inner::before {
-    inset: -5rem -1.25rem -2rem;
-    filter: none;
-    background: linear-gradient(to top, rgb(239 231 214 / 0.95) 60%, rgb(239 231 214 / 0));
-  }
+  .js .copy--bottom .copy__inner::before { display: none; }
 
 
   /* The rail becomes a row of dots along the top edge, clear of the text. */

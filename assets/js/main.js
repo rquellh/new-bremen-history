@@ -61,6 +61,10 @@ function measure() {
     const r = s.el.getBoundingClientRect();
     s.top = r.top + window.scrollY;
     s.height = r.height;
+    // Top of the chapter's text panel on screen (it's fixed, so this ignores
+    // scroll); phones place the photo just above it.
+    const inner = s.el.querySelector('.copy:not(.opening) .copy__inner');
+    s.copyTop = inner ? inner.offsetTop : 0;
   }
 }
 
