@@ -20,24 +20,26 @@ dependencies beyond Google Fonts.
 
 ## Run it locally
 
+The site itself needs nothing, but its tools need Node 24 or newer:
+
 ```sh
-python3 -m http.server 8000
-# open http://localhost:8000/
+npm install     # once
+npm run serve   # then open http://127.0.0.1:8000/
+npm run check   # type-check the scripts and the site's JavaScript
 ```
 
 ## Images
 
 Every image comes from the New Bremen Historic Association's galleries:
 thirteen real photographs and one drawing, each shown whole with its date (where
-known) and credit. `scripts/build_photos.py`
-renders them in ink tones with ordinary image filters (`scripts/ink_photo.py`);
+known) and credit. `scripts/build-photos.ts`
+renders them in ink tones with ordinary image filters (`scripts/ink.ts`);
 nothing is generated or invented. Captions that were written on a photo are
 removed; real signs in the scene stay.
 
 ```sh
-uv venv .venv && uv pip install --python .venv/bin/python opencv-python-headless numpy pillow
-.venv/bin/python scripts/build_photos.py          # all chapters
-.venv/bin/python scripts/build_photos.py 03-canal # one chapter
+npm run photos               # all chapters
+npm run photos -- 03-canal   # one chapter
 ```
 
 Each chapter's photo, source URL, caption and any cleanup areas are in
