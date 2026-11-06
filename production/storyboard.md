@@ -1,6 +1,6 @@
 # Storyboard
 
-A scroll-driven ink-wash history of New Bremen, Ohio, in ten chapters. One fixed
+A scroll-driven ink-wash history of New Bremen, Ohio, in eleven chapters. One fixed
 full-screen stage shows a painting per chapter; scrolling moves a slow camera
 across it, then the next painting bleeds in like ink spreading on wet paper. Text
 sits in the painting's empty space and fades out before each transition.
@@ -35,8 +35,9 @@ The display copy lives in `index.html`. Facts and their sources are in
 | 6 | 1875–1876 | Frogtown and Cheesequarters | bottom | High view down the canal, which splits two clusters of rooftops; a footbridge joins them. | Dusk falls; lamps begin to glow. |
 | 7 | 1888–1896 | Gaslight and an Opera House | right | Dusk street, gas flames in lamps, the Boesel Opera House with warm windows, a small crowd. First gold accents. | Glow from the windows spreads into morning light on Main Street. |
 | 8 | 1902–1931 | The Interurban | left | An electric interurban car on Main Street under its overhead wire, storefronts on both sides. **Video candidate.** | The car rolls out; bunting appears along the street. |
-| 9 | 1933 | The Centennial | right | Main Street in bunting and flags, a parade, crowds on the sidewalks. No lettering on banners. | Confetti and flags soften into trees along the towpath. |
-| 10 | Today | Still on the Divide | bottom | Restored Lock One, the towpath trail under trees, a cyclist, festival lights far off. Same paper and ink as chapter 1. | End. The page's closing credits scroll over it. |
+| 9 | 1933 | The Centennial | right | Main Street in bunting and flags, a parade, crowds on the sidewalks. No lettering on banners. | Bunting and flags blur into the speedway crowd. |
+| 10 | 1930s–1970s | The Speedway | right | A 1930s open-wheel race car sliding through a dirt turn in front of a packed, covered grandstand (reference: NBHA #862). | Dust settles into mist over the canal. |
+| 11 | Today | Still on the Divide | bottom | Restored Lock One, the towpath trail under trees, a cyclist, festival lights far off. Same paper and ink as chapter 1. | End. The page's closing credits scroll over it. |
 
 ## Layout rules
 

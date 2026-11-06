@@ -1,3 +1,7 @@
 .DS_Store
 # Lossless master paintings: large, and not needed on the site. Keep a backup elsewhere.
 production/masters/
+production/references/*
+!production/references/README.md
+__pycache__/
+.venv/

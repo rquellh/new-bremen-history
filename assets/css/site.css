@@ -179,6 +179,15 @@ h2 {
   opacity: 0.55;
 }
 
+/* Mulberry-paper fibers (scripts/make_paper.py), so every painting sits on
+   the same handmade paper whatever the image model drew. */
+.js .paper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("../paper-fibers.svg") 0 0 / 900px 900px;
+}
+
 .js .story { position: relative; z-index: 2; }
 
 .js .chapter {
@@ -213,6 +222,29 @@ h2 {
   position: relative;
   max-width: 27rem;
   isolation: isolate;
+}
+
+/* While a chapter's text shows, its side of the painting dissolves into paper.
+   It rides the copy's own opacity, so the painting returns whole for each
+   transition. */
+.js .copy::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+.js .copy--left::before {
+  background: linear-gradient(to right, rgb(239 231 214 / 0.94) 0%, rgb(239 231 214 / 0.8) 30%, rgb(239 231 214 / 0) 60%);
+}
+.js .copy--right::before {
+  background: linear-gradient(to left, rgb(239 231 214 / 0.94) 0%, rgb(239 231 214 / 0.8) 30%, rgb(239 231 214 / 0) 60%);
+}
+.js .copy--bottom::before {
+  background: linear-gradient(to top, rgb(239 231 214 / 0.95) 0%, rgb(239 231 214 / 0.8) 26%, rgb(239 231 214 / 0) 55%);
+}
+.js .copy--center::before {
+  background: radial-gradient(ellipse 60% 55% at 50% 50%, rgb(239 231 214 / 0.85), rgb(239 231 214 / 0) 100%);
 }
 
 /* An edge-free wash of paper behind the text, so it reads over any painting. */
@@ -325,7 +357,9 @@ h2 {
   position: relative;
   z-index: 5;
   padding: 40vh var(--gutter) 5rem;
-  background: linear-gradient(to bottom, rgb(239 231 214 / 0), var(--paper) 36vh);
+  background:
+    url("../paper-fibers.svg") 0 0 / 900px 900px,
+    linear-gradient(to bottom, rgb(239 231 214 / 0), var(--paper) 36vh);
 }
 .colophon__inner { max-width: 36rem; margin-inline: auto; }
 .colophon h2 { font-size: clamp(2rem, 3.4vw, 2.8rem); }
@@ -362,6 +396,11 @@ h2 {
   .js .copy--right .copy__inner,
   .js .copy--bottom .copy__inner { display: block; max-width: 32rem; width: 100%; }
   .js .copy--bottom h2 { margin-bottom: 0.45em; }
+
+  .js .copy--left::before,
+  .js .copy--right::before {
+    background: linear-gradient(to top, rgb(239 231 214 / 0.95) 0%, rgb(239 231 214 / 0.8) 30%, rgb(239 231 214 / 0) 60%);
+  }
 
   .js .copy--left .copy__inner::before,
   .js .copy--right .copy__inner::before,

@@ -76,8 +76,22 @@ written in our own words; facts are not copyrightable, but the photos and the
 - Centennial celebration July 1–4, 1933. (CHR)
 - The centennial book's histories are by C. A. Schrage and W. W. Grothaus. (CHR, SET)
 
-### 10. Still on the Divide
-- Lock One restored; towpath trail. (CAN, WIKI)
+### 10. The Speedway
+- **PROG**: Official 1968 New Bremen Speedway Program, in the NBHA speedway gallery.
+  https://newbremenhistory.org/en/content/111-new-bremen-speedway
+- Racing at the New Bremen Speedway in the early 1930s. (GAL captions: "At the New Bremen
+  Speedway. Early 1930's racing.", "John Wissman in race car in 1930.")
+- Covered grandstand and dirt track in the 1930s. (NBHA photo 862)
+- A half-mile asphalt oval by 1967; USAC (United States Auto Club) sprint races; three USAC
+  sprint events in 1968. (PROG p. 4)
+- Track record: Larry Dickson, 18.42 seconds, August 27, 1967, in the USAC twin 50s, "almost 98
+  miles an hour". (PROG p. 4)
+- Racing ended in the 1970s. (GAL caption: "Last days of racing in the 1970's.")
+- Left out: the 1931 riot and fire.
+
+### 11. Still on the Divide
+- Lock One restored; towpath trail. (CAN, WIKI) Restoration and canal cleaning in June 2006.
+  (GAL 2001–present captions)
 - Bremenfest since 1975. (HOME)
 - NBHA founded 1973. (NBHA)
 - Population 3,034 in 2020. (WIKI)
@@ -97,6 +111,5 @@ written in our own words; facts are not copyrightable, but the photos and the
 
 ## To verify before publishing
 
-- Whether Lock One's restoration has a date worth citing.
 - Bremenfest's month (copy says "every year", not a season).
 - NBHA's museum houses: Pape House (1865) and Luelleman House (1837); addresses.

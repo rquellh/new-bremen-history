@@ -33,7 +33,8 @@ SCENES = [
     ("07-gaslight", "1888", "Gaslight and the opera house", "right", "lamps"),
     ("08-interurban", "1902", "Interurban on Main Street", "left", "street"),
     ("09-centennial", "1933", "Centennial parade", "right", "flags"),
-    ("10-today", "Today", "Lock One today", "bottom", "lock"),
+    ("10-speedway", "1967", "The speedway grandstand", "right", "track"),
+    ("11-today", "Today", "Lock One today", "bottom", "lock"),
 ]
 
 
@@ -184,6 +185,16 @@ def motif(kind, rng, cx, cy):
                     s.append(f'<path d="M{x:.0f},{y0:.0f} l{spread / n:.0f},0 l{-spread / n / 2:.0f},{30 - row * 6} Z" fill="{colors[k % len(colors)]}" opacity=".7" filter="url(#brush)"/>')
             for _ in range(60):
                 s.append(f'<ellipse cx="{vx + rng.uniform(-380, 380):.0f}" cy="{H * rng.uniform(.84, .92):.0f}" rx="8" ry="15" fill="{INK}" opacity=".65"/>')
+    elif kind == "track":
+        s.append(f'<path d="M-40,{H * .78:.0f} Q{W / 2},{H * .62:.0f} {W + 40},{H * .8:.0f}" stroke="{INK}" stroke-width="5" fill="none" opacity=".35" filter="url(#brush)"/>')
+        s.append(f'<rect x="{cx - 460}" y="{H * .34:.0f}" width="900" height="{H * .2:.0f}" fill="{INK}" opacity=".55" filter="url(#brush)"/>')
+        s.append(f'<path d="M{cx - 480},{H * .34:.0f} h940 l-40,-50 h-860 Z" fill="{INK}" opacity=".7" filter="url(#brush)"/>')
+        for _ in range(140):
+            s.append(f'<circle cx="{cx + rng.uniform(-440, 420):.0f}" cy="{H * rng.uniform(.37, .52):.0f}" r="7" fill="{PAPER}" opacity=".45"/>')
+        s.append(f'<path d="M{cx - 140},{H * .72:.0f} h220 l20,-40 h-150 l-30,-30 h-40 Z" fill="{INK}" opacity=".85" filter="url(#brush)"/>')
+        for wx in (cx - 110, cx + 50):
+            s.append(f'<circle cx="{wx}" cy="{H * .73:.0f}" r="34" fill="none" stroke="{INK}" stroke-width="9" opacity=".85"/>')
+        s.append(f'<path d="M{cx + 120},{H * .74:.0f} c120,-10 260,-40 420,-20" stroke="{INK}" stroke-width="40" fill="none" opacity=".12" filter="url(#wash)"/>')
     elif kind == "lock":
         for k in range(5):
             s.append(f'<ellipse cx="{cx - 520 + k * 260}" cy="{H * .36:.0f}" rx="{rng.uniform(150, 220):.0f}" ry="{rng.uniform(150, 210):.0f}" fill="{INK}" opacity=".18" filter="url(#wash)"/>')
