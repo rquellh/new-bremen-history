@@ -1,0 +1,423 @@
+/* New Bremen: an ink-wash history.
+   Without JS the page is a plain illustrated article. With JS (html.js) the
+   chapters become a scroll track: paintings render on a fixed canvas and each
+   chapter's copy is a fixed layer faded in and out by assets/js/main.js. */
+
+:root {
+  --paper: #efe7d6;
+  --paper-deep: #e3d8c1;
+  --ink: #1d2320;
+  --ink-soft: #38423d;
+  --ink-faint: #69746d;
+  --wash: #8d998e;
+  --seal: #a8322a;
+  --seal-ink: #f7efe1;
+
+  --display: "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
+  --body: "Source Serif 4", "Iowan Old Style", Georgia, serif;
+
+  --gutter: clamp(1rem, 6vw, 8rem);
+  --rail-space: clamp(3.5rem, 8vw, 10rem);
+
+  color-scheme: light;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 1.0625rem;
+  line-height: 1.62;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2 {
+  font-family: var(--display);
+  font-weight: 600;
+  line-height: 0.98;
+  letter-spacing: -0.01em;
+  margin: 0;
+  text-wrap: balance;
+}
+
+p { margin: 0 0 0.9em; text-wrap: pretty; }
+
+a { color: inherit; text-decoration-color: color-mix(in srgb, var(--seal) 70%, transparent); text-underline-offset: 0.18em; }
+a:hover { color: var(--seal); }
+:focus-visible { outline: 2px solid var(--seal); outline-offset: 3px; }
+
+.skip {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 20;
+  padding: 0.5rem 0.9rem;
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: 3px;
+}
+.skip:focus { top: 1rem; }
+
+/* ---------- Shared type ---------- */
+
+.kicker,
+.eyebrow {
+  font-family: var(--body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 0 0 0.6rem;
+}
+
+h1 {
+  font-size: clamp(4.2rem, 14vw, 10.5rem);
+  font-weight: 500;
+  line-height: 0.86;
+  margin: 0.1em 0 0.25em;
+}
+
+h2 {
+  font-size: clamp(2.3rem, 4.3vw, 3.6rem);
+  margin: 0 0 0.45em;
+}
+
+.lede {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1.3rem, 2.3vw, 1.75rem);
+  line-height: 1.25;
+  color: var(--ink-soft);
+  text-wrap: balance;
+}
+
+.copy p:not(.kicker):not(.eyebrow):not(.lede):not(.cue) { color: var(--ink-soft); }
+
+
+/* ---------- Without JS: a plain illustrated article ---------- */
+
+.stage,
+.paper { display: none; }
+
+.rail { display: none; }
+
+.chapter { padding: 0 0 3rem; }
+
+.art { margin: 0; }
+.art img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 80vh;
+  object-fit: cover;
+}
+
+.copy { padding: 2rem var(--gutter) 0; }
+.copy__inner { max-width: 34rem; }
+.copy--center .copy__inner,
+.copy--bottom .copy__inner { margin-inline: auto; }
+.opening { text-align: center; padding-top: 4rem; }
+.cue { display: none; }
+
+/* ---------- With JS: the scroll stage ---------- */
+
+.js .stage {
+  display: block;
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background: var(--paper);
+}
+
+/* A soft vignette at the edges of the page. */
+.js .paper {
+  display: block;
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 55%, rgb(120 100 70 / 0.16) 100%);
+  mix-blend-mode: multiply;
+  opacity: 0.6;
+}
+
+
+.js .story { position: relative; z-index: 2; }
+
+.js .chapter {
+  position: relative;
+  height: calc(var(--span, 3) * 100vh);
+  padding: 0;
+}
+
+/* The painting draws on the canvas; the figure's image stays for its alt text. */
+.js .art {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.js .copy {
+  position: fixed;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  pointer-events: none;
+  opacity: 0;
+  will-change: opacity, transform;
+}
+
+.js .copy__inner {
+  position: relative;
+  max-width: 27rem;
+  isolation: isolate;
+}
+
+/* While a chapter's text shows, its side of the painting dissolves into paper.
+   It rides the copy's own opacity, so the painting returns whole for each
+   transition. */
+.js .copy::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+.js .copy--left::before {
+  background: linear-gradient(to right, rgb(239 231 214 / 0.94) 0%, rgb(239 231 214 / 0.8) 30%, rgb(239 231 214 / 0) 60%);
+}
+.js .copy--right::before {
+  background: linear-gradient(to left, rgb(239 231 214 / 0.94) 0%, rgb(239 231 214 / 0.8) 30%, rgb(239 231 214 / 0) 60%);
+}
+.js .copy--bottom::before {
+  background: linear-gradient(to top, rgb(239 231 214 / 0.95) 0%, rgb(239 231 214 / 0.8) 26%, rgb(239 231 214 / 0) 55%);
+}
+.js .copy--center::before {
+  background: radial-gradient(ellipse 60% 55% at 50% 50%, rgb(239 231 214 / 0.85), rgb(239 231 214 / 0) 100%);
+}
+
+/* An edge-free wash of paper behind the text, so it reads over any painting. */
+.js .copy__inner::before {
+  content: "";
+  position: absolute;
+  inset: -4.5rem -5.5rem;
+  z-index: -1;
+  background: radial-gradient(closest-side, rgb(239 231 214 / 0.9), rgb(239 231 214 / 0.72) 55%, rgb(239 231 214 / 0) 100%);
+  filter: blur(6px);
+}
+
+.js .copy--left { justify-content: flex-start; padding-left: var(--gutter); }
+.js .copy--right { justify-content: flex-end; padding-right: calc(var(--gutter) * 0.6 + var(--rail-space)); }
+/* Bottom copy runs wide and short: title on the left, text on the right, so
+   the painting keeps the upper two-thirds of the screen. */
+.js .copy--bottom { justify-content: center; align-items: flex-end; padding: 0 var(--rail-space) 8vh var(--gutter); }
+.js .copy--bottom .copy__inner {
+  max-width: 62rem;
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  column-gap: clamp(2rem, 4vw, 4rem);
+  align-items: end;
+}
+.js .copy--bottom h2 { margin-bottom: 0.15em; }
+.js .copy--bottom .copy__body p:last-child { margin-bottom: 0; }
+.js .copy--bottom .copy__inner::before { inset: -4rem -6rem -3rem; }
+.js .copy--center { justify-content: center; text-align: center; }
+.js .copy--center .copy__inner { max-width: 46rem; }
+.js .copy--center .copy__inner::before { inset: -3rem -6rem; }
+
+.js .opening { padding: 0; }
+.js .cue {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 2.2rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.js .cue::after {
+  content: "";
+  width: 2px;
+  height: 3.2rem;
+  border-radius: 2px;
+  background: linear-gradient(to bottom, var(--ink-soft), transparent);
+  transform-origin: top;
+  animation: drip 2.4s ease-in-out infinite;
+}
+@keyframes drip {
+  0% { transform: scaleY(0); opacity: 0.9; }
+  60% { transform: scaleY(1); opacity: 0.9; }
+  100% { transform: scaleY(1); opacity: 0; }
+}
+
+/* ---------- Chapter rail ---------- */
+
+.js .rail {
+  display: block;
+  position: fixed;
+  right: clamp(0.9rem, 2.4vw, 2rem);
+  top: 50%;
+  z-index: 6;
+  transform: translateY(-50%);
+}
+.rail ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.15rem; }
+.rail a {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.7rem;
+  padding: 0.3rem 0;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-faint);
+  text-decoration: none;
+}
+.rail a::after {
+  content: "";
+  flex: none;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: 1.5px solid currentColor;
+  transition: background-color 0.3s, transform 0.3s, border-color 0.3s;
+}
+.rail span {
+  opacity: 0;
+  transform: translateX(4px);
+  transition: opacity 0.3s, transform 0.3s;
+  white-space: nowrap;
+}
+.rail a[aria-current="step"] { color: var(--ink); }
+.rail a[aria-current="step"]::after { background: var(--seal); border-color: var(--seal); transform: scale(1.35); }
+.rail a[aria-current="step"] span,
+.rail:hover span,
+.rail:focus-within span { opacity: 1; transform: none; }
+.rail a:hover { color: var(--seal); }
+
+/* ---------- Colophon ---------- */
+
+.colophon {
+  position: relative;
+  z-index: 5;
+  padding: 40vh var(--gutter) 5rem;
+  background: linear-gradient(to bottom, rgb(239 231 214 / 0), var(--paper) 36vh);
+}
+.colophon__inner { max-width: 36rem; margin-inline: auto; }
+.colophon h2 { font-size: clamp(2rem, 3.4vw, 2.8rem); }
+.colophon p { color: var(--ink-soft); }
+.colophon .fine { font-size: 0.9rem; color: var(--ink-faint); margin-top: 1.6rem; }
+.colophon .top {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* ---------- Narrow screens: copy moves to a bottom panel ---------- */
+
+@media (max-width: 720px) {
+  body { font-size: 0.97rem; line-height: 1.55; }
+  h2 { font-size: 2.05rem; }
+  .lede { font-size: 1.2rem; }
+
+  .js .copy--center { padding: 0 1.5rem; }
+  .js .copy--center .copy__inner::before { inset: -2rem -1.5rem; }
+
+  .js .copy--left,
+  .js .copy--right,
+  .js .copy--bottom {
+    justify-content: center;
+    align-items: flex-end;
+    padding: 0 1.25rem max(1.5rem, env(safe-area-inset-bottom));
+  }
+  .js .copy--left .copy__inner,
+  .js .copy--right .copy__inner,
+  .js .copy--bottom .copy__inner { display: block; max-width: 32rem; width: 100%; }
+  .js .copy--bottom h2 { margin-bottom: 0.45em; }
+  /* When the photo and text both fit, the text follows the photo down from
+     the top and any spare room falls below it (main.js sets these). */
+  .js .copy.is-top { align-items: flex-start; padding-top: var(--copy-top, 0px); }
+
+  /* The photo sits above the text here, not behind it, so no paper wash. */
+  .js .copy--left::before,
+  .js .copy--right::before,
+  .js .copy--bottom::before,
+  .js .copy--left .copy__inner::before,
+  .js .copy--right .copy__inner::before,
+  .js .copy--bottom .copy__inner::before { display: none; }
+
+
+  /* The rail becomes a row of dots along the top edge, clear of the text. */
+  .js .rail {
+    top: max(0.6rem, env(safe-area-inset-top));
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .rail ol { grid-auto-flow: column; gap: 0; }
+  .js .rail span { display: none; }
+  .js .rail a { padding: 0.45rem 0.4rem; }
+}
+
+/* Short phone screens (or a phone browser with its toolbars showing): smaller
+   text leaves room for the photo above it. */
+@media (max-width: 720px) and (max-height: 760px) {
+  body { font-size: 0.9rem; line-height: 1.5; }
+  h2 { font-size: 1.8rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .cue::after { animation: none; transform: none; }
+  .rail a::after,
+  .rail span { transition: none; }
+}
+
+/* ---------- Photo credits ---------- */
+
+.credit {
+  margin-top: 1.1rem;
+  padding-top: 0.7rem;
+  border-top: 1px solid color-mix(in srgb, var(--ink-faint) 35%, transparent);
+  font-size: 0.8rem;
+  font-style: italic;
+  line-height: 1.45;
+  color: var(--ink-faint);
+}
+.copy .credit { color: var(--ink-faint); }
+.credit span {
+  display: block;
+  font-style: normal;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.art figcaption { font-size: 0.85rem; font-style: italic; color: var(--ink-faint); padding: 0.4rem var(--gutter) 0; }
+
+@media (max-width: 720px) {
+  .credit { margin-top: 0.7rem; padding-top: 0.5rem; font-size: 0.74rem; }
+}

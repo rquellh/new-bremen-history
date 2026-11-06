@@ -1,0 +1,114 @@
+# The photograph behind each chapter. scripts/build_photos.py reads this file.
+#
+# All photos are from the New Bremen Historic Association's galleries
+# (https://newbremenhistory.org/en/content/category/25-photo-galleries) and are
+# shown with their real dates. They are rendered in the ink style with ordinary
+# image filters (scripts/ink_photo.py); nothing is generated or invented.
+#
+# clean: rectangles [x, y, w, h] as fractions of the photo, holding captions
+#   that were written or printed on the photo. They're filled in from the
+#   surrounding pixels (OpenCV inpainting). Real signs in the scene stay.
+# credit: the caption shown on the site.
+#
+# Permission from the association is needed before publishing.
+
+[[photo]]
+file = "01-divide"
+nbha = "NBHA photos1181"
+url = "https://www.newbremenhistory.org/img/image-gallery/NBHA%20photos1181.jpg"
+original = "1909 photo of the Wm. F. Greber Walnut Hill Fruit Farm in the strawberry fields."
+credit = "Strawberry fields at the Walnut Hill Fruit Farm, 1909."
+
+[[photo]]
+file = "02-clearing"
+nbha = "NBHA photos1083"
+url = "https://www.newbremenhistory.org/img/image-gallery/NBHA%20photos1083.jpg"
+original = "The Luelleman House, begun in 1837."
+kind = "drawing"
+credit = "The Luelleman House, built about 1837."
+
+[[photo]]
+file = "03-canal"
+nbha = "NBHA photos199"
+url = "https://www.newbremenhistory.org/img/image-gallery/NBHA%20photos199.jpg"
+original = "Canal looking north at Lock I – after 1904."
+credit = "The canal at Lock One, looking north, after 1904."
+clean = [[0.245, 0.035, 0.49, 0.07]]  # printed postcard title
+
+[[photo]]
+file = "04-boomtown"
+nbha = "NBHA photos018"
+url = "https://www.newbremenhistory.org/img/image-gallery/NBHA%20photos018.jpg"
+original = "August Schneider & Henry Wiegman at barrel shop in 1898"
+credit = "August Schneider and Henry Wiegman at a barrel shop, 1898."
+
+[[photo]]
+file = "05-rails"
+nbha = "NBHA photos294"
+url = "https://www.newbremenhistory.org/img/image-gallery/NBHA%20photos294.jpg"
+original = "NB depot in 1962, before moving to Crown farm."
+credit = "The New Bremen railroad depot, 1962."
+
+[[photo]]
+file = "06-two-towns"
+nbha = "NBHA photos175"
+url = "https://www.newbremenhistory.org/img/image-gallery/NBHA%20photos175.jpg"
+original = "View from St. Paul Church looking south - circa 1900."
+credit = "Looking south from St. Paul Church, about 1900."
+
+[[photo]]
+file = "07-gaslight"
+nbha = "NBHA photos077"
+url = "https://www.newbremenhistory.org/img/image-gallery/NBHA%20photos077.jpg"
+original = "Play at opera house in early 1900's."
+credit = "A play on the opera house stage, early 1900s."
+
+[[photo]]
+file = "08-interurban"
+nbha = "NBHA photos002"
+url = "https://www.newbremenhistory.org/img/image-gallery/NBHA%20photos002.jpg"
+original = "Looking north, from Monroe St., with the Western Ohio Railway car approaching."
+credit = "Looking north from Monroe Street as a Western Ohio Railway car approaches, early 1900s."
+clean = [[0.105, 0.915, 0.165, 0.085]]  # handwritten "MAIN ST, NEW..."
+
+[[photo]]
+file = "09-speedway"
+nbha = "NBHA photos862"
+url = "https://www.newbremenhistory.org/img/image-gallery/NBHA%20photos862.jpg"
+original = "(no caption; New Bremen Speedway gallery)"
+credit = "A race car takes a turn in front of the grandstand at the New Bremen Speedway."
+
+[[photo]]
+file = "10-centennial"
+nbha = "NBHA photos143"
+url = "https://www.newbremenhistory.org/img/image-gallery/NBHA%20photos143.jpg"
+original = "1933 Centennial Parade."
+credit = "An ox-drawn covered wagon in the 1933 Centennial Parade."
+
+[[photo]]
+file = "11-crown"
+nbha = "NBHA photos165"
+url = "https://www.newbremenhistory.org/img/image-gallery/NBHA%20photos165.jpg"
+original = "Crown former antenna rotor plant in the 1970's, formerly Rabe Hardware Store."
+credit = "Crown's former antenna rotator plant, in the old Rabe Hardware Store building, 1970s."
+
+[[photo]]
+file = "12-saving"
+nbha = "Luelleman House-2024"
+url = "https://www.newbremenhistory.org/img/image-gallery/NBHA-Museums/Luellman-House-2024-2.jpg"
+original = "Luelleman House photo taken in 2024 with the historical marker plaque."
+credit = "The Luelleman House, now the association's museum, 2024."
+
+[[photo]]
+file = "13-bremenfest"
+nbha = "NBHA slides015"
+url = "https://www.newbremenhistory.org/img/image-gallery/bremenfest/NBHA%20slides015.jpg"
+original = "(no caption; Bremenfest gallery slide)"
+credit = "A band plays in the gazebo of a Bremenfest float carrying the 1975 Bremenfest queen."
+
+[[photo]]
+file = "14-today"
+nbha = "NBHA scenes 2019 93"
+url = "https://www.newbremenhistory.org/img/image-gallery/NBOscenes/NBHA%20scenes%202019%2093.jpg"
+original = "(no caption; Scenes around New Bremen gallery, 2019)"
+credit = "The canal through the middle of town, with the Crown Pavilion beside it, 2019."
