@@ -75,7 +75,8 @@ written in our own words; facts are not copyrightable, but the photos and the
 ### 8. The Interurban
 - Western Ohio Railway: first car April 21, 1902. (SET)
 - Cars ran on Main Street. (GAL caption, Wietholter print subject)
-- Abandoned 1931. (CHR, SET) An NBHA gallery caption says it ran "from 1902 to 1932"; the
+- Abandoned 1931. (CHR, SET) "Until cars and paved roads took over" is general context for
+  why interurbans closed, not from a cited source. An NBHA gallery caption says it ran "from 1902 to 1932"; the
   copy follows the centennial book.
 
 ### 9. The Speedway
@@ -92,7 +93,8 @@ written in our own words; facts are not copyrightable, but the photos and the
 - Left out: the 1931 riot and fire.
 
 ### 10. The Centennial
-- Centennial celebration July 1–4, 1933. (CHR)
+- Centennial celebration July 1–4, 1933. (CHR) "In the middle of the Depression" is the
+  date's general context.
 - The centennial book's histories are by C. A. Schrage and W. W. Grothaus. (CHR, SET)
 
 ### 11. Crown

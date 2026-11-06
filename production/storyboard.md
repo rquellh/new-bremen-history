@@ -32,7 +32,7 @@ The display copy lives in `index.html`. Facts and their sources are in
 | 6 | 1875–1876 | Frogtown and Cheesequarters | bottom | Looking south from St. Paul Church, about 1900. |
 | 7 | 1888–1896 | Gaslight and an Opera House | right | A play on the opera house stage, early 1900s. |
 | 8 | 1902–1931 | The Interurban | left | Looking north from Monroe Street as a Western Ohio Railway car approaches, early 1900s. |
-| 9 | 1930s–1970s | The Speedway | right | A race car passes the covered grandstand at the New Bremen Speedway. |
+| 9 | 1930s–1970s | The Speedway | right | A race car takes a turn in front of the grandstand at the New Bremen Speedway. |
 | 10 | 1933 | The Centennial | left | An ox-drawn covered wagon in the 1933 Centennial Parade. |
 | 11 | 1945 | Crown | right | Crown's former antenna rotator plant, in the old Rabe Hardware Store building, 1970s. |
 | 12 | 1968–1976 | Saving the Story | left | The Luelleman House, now the association's museum, 2024. |
