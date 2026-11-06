@@ -1,13 +1,12 @@
 # Storyboard
 
 A scroll-driven ink-wash history of New Bremen, Ohio, in fourteen chapters. One fixed
-full-screen stage shows a painting per chapter; scrolling moves a slow camera
-across it, then the next painting bleeds in like ink spreading on wet paper. Text
-sits in the painting's empty space and fades out before each transition.
+full-screen stage shows each chapter's photo; scrolling moves a slow camera
+over it, then the next photo bleeds in like ink spreading on wet paper. Text
+sits beside the photo (below it on phones) and fades out before each transition.
 
 The display copy lives in `index.html`. Facts and their sources are in
-[sources.md](sources.md). Image prompts are drafted in
-[image-prompts.md](image-prompts.md).
+[sources.md](sources.md).
 
 ## Visual approach
 
@@ -41,11 +40,17 @@ The display copy lives in `index.html`. Facts and their sources are in
 
 ## Layout rules
 
-- The copy column sits in the painting's empty third (`left`, `right`, or
-  `bottom`), so every composition must leave that area quiet. The image prompts
-  say which side to leave open.
-- On narrow screens the copy moves to a bottom panel, and the canvas crops
-  around each chapter's focus point (`data-focus` in `index.html`).
+- Each chapter's copy sits on one side (`left`, `right` or `bottom`, from its
+  `copy--` class in `index.html`). On desktop the photo is drawn whole, like a
+  print, on the opposite side: on the right for `left` copy, on the left for
+  `right` copy, and above the text for `bottom` copy, stopping short of the
+  text however tall it runs.
+- On phones in portrait, the photo runs full width at the top, just below the
+  chapter dots, with its faded sides slightly off the screen edges. The text
+  follows right under it. If the photo and the text don't both fit, the text
+  stays at the bottom and the photo shrinks to fit the space above it.
+- The placement is set by `printBox` in `assets/js/stage.js` and `placeCopy`
+  in `assets/js/main.js`.
 - Copy is hidden during transitions. The opening title shows over chapter 1
   until the reader starts scrolling.
 

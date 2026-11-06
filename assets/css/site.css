@@ -1,6 +1,6 @@
 /* New Bremen: an ink-wash history.
    Without JS the page is a plain illustrated article. With JS (html.js) the
-   chapters become a scroll track: paintings render on a fixed canvas and each
+   chapters become a scroll track: photos are drawn on a fixed canvas and each
    chapter's copy is a fixed layer faded in and out by assets/js/main.js. */
 
 :root {
@@ -162,7 +162,7 @@ h2 {
   padding: 0;
 }
 
-/* The painting draws on the canvas; the figure's image stays for its alt text. */
+/* The photo is drawn on the canvas; the figure's image stays for its alt text. */
 .js .art {
   position: absolute;
   width: 1px;
@@ -190,8 +190,8 @@ h2 {
   isolation: isolate;
 }
 
-/* While a chapter's text shows, its side of the painting dissolves into paper.
-   It rides the copy's own opacity, so the painting returns whole for each
+/* While a chapter's text shows, its side of the screen fades to paper. It
+   rides the copy's own opacity, so the photo is whole again for each
    transition. */
 .js .copy::before {
   content: "";
@@ -213,7 +213,7 @@ h2 {
   background: radial-gradient(ellipse 60% 55% at 50% 50%, rgb(239 231 214 / 0.85), rgb(239 231 214 / 0) 100%);
 }
 
-/* An edge-free wash of paper behind the text, so it reads over any painting. */
+/* An edge-free wash of paper behind the text, so it reads over any photo. */
 .js .copy__inner::before {
   content: "";
   position: absolute;
@@ -226,7 +226,7 @@ h2 {
 .js .copy--left { justify-content: flex-start; padding-left: var(--gutter); }
 .js .copy--right { justify-content: flex-end; padding-right: calc(var(--gutter) * 0.6 + var(--rail-space)); }
 /* Bottom copy runs wide and short: title on the left, text on the right, so
-   the painting keeps the upper two-thirds of the screen. */
+   the photo keeps the upper two-thirds of the screen. */
 .js .copy--bottom { justify-content: center; align-items: flex-end; padding: 0 var(--rail-space) 8vh var(--gutter); }
 .js .copy--bottom .copy__inner {
   max-width: 62rem;

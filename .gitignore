@@ -1,5 +1,5 @@
 .DS_Store
-# Lossless master paintings: large, and not needed on the site. Keep a backup elsewhere.
+# Before/after previews of caption cleaning, written by scripts/build-photos.ts. Not needed on the site.
 production/masters/
 production/references/*
 !production/references/README.md

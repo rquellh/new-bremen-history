@@ -52,8 +52,6 @@ be published until they give permission.
 - [storyboard.md](production/storyboard.md): the chapters and layout rules.
 - [sources.md](production/sources.md): every fact in the text and where it came
   from, plus what was left out and why.
-- [ai-experiment/](production/ai-experiment/): an abandoned attempt at AI
-  paintings, and why it was dropped.
 
 ## Credits
 
