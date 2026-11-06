@@ -34,7 +34,7 @@ The display copy lives in `index.html`. Facts and their sources are in
 | 8 | 1902–1931 | The Interurban | left | Looking north on Main Street from Monroe Street as a Western Ohio Railway car approaches, early 1900s. |
 | 9 | 1933 | The Centennial | right | An ox-drawn covered wagon in the 1933 Centennial Parade. |
 | 10 | 1930s–1970s | The Speedway | right | A race car takes a turn in front of the grandstand at the New Bremen Speedway, early years. |
-| 11 | Today | Still on the Divide | bottom | The restored canal and towpath trail, 2018. |
+| 11 | Today | The Story Continues | bottom | The restored canal and towpath trail, 2018. |
 
 ## Layout rules
 

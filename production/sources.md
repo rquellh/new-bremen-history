@@ -89,7 +89,7 @@ written in our own words; facts are not copyrightable, but the photos and the
 - Racing ended in the 1970s. (GAL caption: "Last days of racing in the 1970's.")
 - Left out: the 1931 riot and fire.
 
-### 11. Still on the Divide
+### 11. The Story Continues
 - Lock One restored; towpath trail. (CAN, WIKI) Restoration and canal cleaning in June 2006.
   (GAL 2001–present captions)
 - Bremenfest since 1975. (HOME)
