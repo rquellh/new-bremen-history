@@ -49,12 +49,12 @@ def wrapped(pts: list[tuple[float, float]], attrs: str) -> list[str]:
 
 def main() -> None:
     marks = []
-    for _ in range(170):
+    for _ in range(90):
         tone = rng.choice(["#b9a47c", "#c8b48c", "#a8916a", "#d6c6a3"])
         width = rng.uniform(0.5, 1.3)
-        opacity = rng.uniform(0.55, 1.0)
+        opacity = rng.uniform(0.25, 0.55)
         marks += wrapped(fiber(), f'stroke="{tone}" stroke-width="{width:.1f}" opacity="{opacity:.2f}"')
-    for _ in range(70):
+    for _ in range(35):
         x, y = rng.uniform(0, TILE), rng.uniform(0, TILE)
         r = rng.uniform(0.6, 1.8)
         marks.append(f'<circle cx="{x:.0f}" cy="{y:.0f}" r="{r:.1f}" fill="#8f7a55" stroke="none" opacity="{rng.uniform(0.15, 0.4):.2f}"/>')

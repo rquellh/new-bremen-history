@@ -183,6 +183,8 @@ export class Stage {
 
   // Draw a scene cover-fit, with its camera move at progress u (0..1).
   draw(ctx, s, u) {
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
     const W = this.canvas.width;
     const H = this.canvas.height;
     const { image, video } = s.media;
