@@ -96,8 +96,10 @@ function updateRail(index, p) {
   const i = s.transition && p > 1 - s.transition / 2 ? index + 1 : index;
   if (i === railIndex) return;
   railIndex = i;
-  railLinks.forEach((a, k) => {
-    if (k === i) a.setAttribute('aria-current', 'step');
+  // Match links by chapter id; the opening has no link, so nothing is current there.
+  const href = `#${scenes[i]?.id}`;
+  railLinks.forEach((a) => {
+    if (a.getAttribute('href') === href) a.setAttribute('aria-current', 'step');
     else a.removeAttribute('aria-current');
   });
 }
