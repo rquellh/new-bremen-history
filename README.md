@@ -27,8 +27,9 @@ python3 -m http.server 8000
 
 ## Images
 
-Every image is a real photograph from the New Bremen Historic Association's
-galleries, shown whole with its date and credit. `scripts/build_photos.py`
+Every image comes from the New Bremen Historic Association's galleries:
+thirteen real photographs and one drawing, each shown whole with its date (where
+known) and credit. `scripts/build_photos.py`
 renders them in ink tones with ordinary image filters (`scripts/ink_photo.py`);
 nothing is generated or invented. Captions that were written on a photo are
 removed; real signs in the scene stay.
