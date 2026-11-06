@@ -103,7 +103,8 @@ written in our own words; facts are not copyrightable, but the photos and the
 - About 20,900 employees; privately held; Jim Dicke II CEO and Jim Dicke III president;
   headquarters in New Bremen; fifth-largest lift truck maker (Modern Materials Handling,
   2022). (WIKI-C) The copy says "one of the largest" and "more than 20,000".
-- Photo: NBHA photos960, "Crown – plant #3 in 1968."
+- Photo: NBHA photos165, "Crown former antenna rotor plant in the 1970's, formerly Rabe
+  Hardware Store."
 
 ### 12. Saving the Story
 - **THOMPSON**: https://newbremenhistory.org/en/content/20-the-thompson-house (citing
@@ -143,6 +144,13 @@ written in our own words; facts are not copyrightable, but the photos and the
 - Population 3,034 in 2020. (WIKI)
 - Crown Equipment world headquarters; Bicycle Museum of America. (WIKI)
 - NBHA museum on North Main Street. (NBHA)
+- **PAV**: https://newbremenhistory.org/en/content/126-the-crown-pavilion (quoting HA
+  Dorsten): the pavilion was built around 1900 on Orchard Island, Indian Lake; the James F.
+  Dicke family bought the property around 2000; the project was approved by July 2003 and
+  the steel structure re-erected in New Bremen. The copy says "built around 1900 on an
+  island in Indian Lake" and "moved here by the Dicke family in the early 2000s".
+- Photo: NBHA scenes 2019 93 (uncaptioned aerial). The round building beside the canal is
+  the Crown Pavilion: its green roof and red steel posts match the photo in PAV.
 
 ## Left out on purpose
 

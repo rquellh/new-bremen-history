@@ -316,7 +316,11 @@ function printBox(side, W, H, copyTop, px) {
     return { x: -W * 0.11, y: top, w: W * 1.22, h: Math.max(H * 0.2, bottom - top), anchorBottom: true };
   }
   if (side === 'right') return { x: W * 0.04, y: H * 0.08, w: W * 0.52, h: H * 0.84 };
-  if (side === 'bottom') return { x: W * 0.1, y: H * 0.05, w: W * 0.8, h: H * 0.56 };
+  if (side === 'bottom') {
+    // Stop above the text, however tall it runs.
+    const bottom = Math.min(H * 0.61, copyTop ? copyTop - 18 * px : H);
+    return { x: W * 0.1, y: H * 0.05, w: W * 0.8, h: Math.max(H * 0.3, bottom - H * 0.05) };
+  }
   return { x: W * 0.4, y: H * 0.08, w: W * 0.49, h: H * 0.84 };
 }
 

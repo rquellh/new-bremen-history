@@ -34,10 +34,10 @@ The display copy lives in `index.html`. Facts and their sources are in
 | 8 | 1902–1931 | The Interurban | left | Looking north on Main Street from Monroe Street as a Western Ohio Railway car approaches, early 1900s. |
 | 9 | 1930s–1970s | The Speedway | right | A race car takes a turn in front of the grandstand at the New Bremen Speedway, early years. |
 | 10 | 1933 | The Centennial | left | An ox-drawn covered wagon in the 1933 Centennial Parade. |
-| 11 | 1945 | Crown | right | Crown's Plant 3 and the fields around it, 1968. |
+| 11 | 1945 | Crown | right | Crown's former antenna rotator plant, once Rabe Hardware, in the 1970s. |
 | 12 | 1968–1976 | Saving the Story | left | The Luelleman House, now the association's museum, in 2024. |
 | 13 | Since the mid-1970s | Bremenfest | right | A band plays in the gazebo of a Bremenfest float carrying the 1975 Bremenfest queen. |
-| 14 | Today | The Story Continues | bottom | The restored canal and towpath trail, 2018. |
+| 14 | Today | The Story Continues | bottom | The canal through the middle of town, with the Crown Pavilion beside it, 2019. |
 
 ## Layout rules
 
