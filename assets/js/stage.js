@@ -1,7 +1,5 @@
-// The painting stage: one fixed canvas that shows a chapter's painting with a
-// slow camera move, then bleeds the next painting in like ink spreading on wet
-// paper. A chapter can also have a video, scrubbed by scroll; until it loads (or
-// if it fails) its still painting is shown instead.
+// The stage: one fixed canvas that shows a chapter's photo with a slow camera
+// move, then bleeds the next photo in like ink spreading on wet paper.
 
 const PAPER = '#efe7d6';
 const INK = [29, 35, 32];
@@ -18,11 +16,10 @@ const EDGE = 0.06; // softness of the ink edge, in field units
  * @property {number[]} drift
  * @property {number[]} bleed
  * @property {{ aspect: number, src: string, srcset: string | null, sizes: string | null } | null} image
- * @property {string | null} video
  * @property {string} fit
  * @property {string} side
  * @property {number} [copyTop]
- * @property {{ image: Picture | null, video: HTMLVideoElement | null, loading: boolean }} media
+ * @property {{ image: Picture | null, loading: boolean }} media
  */
 /**
  * A decoded photo, or an SVG rasterized to a canvas.
@@ -42,7 +39,7 @@ export class Stage {
     this.reduceMotion = reduceMotion;
     this.onChange = () => {};
 
-    // Offscreen buffers: the incoming painting, its reveal mask, and the ink fringe.
+    // Offscreen buffers: the incoming photo, its reveal mask, and the ink fringe.
     this.layer = document.createElement('canvas');
     this.lctx = /** @type {CanvasRenderingContext2D} */ (this.layer.getContext('2d'));
     this.mask = document.createElement('canvas');
@@ -53,7 +50,7 @@ export class Stage {
     this.fields = new Map();
     this.last = null;
     this.dirty = true;
-    for (const s of scenes) s.media = { image: null, video: null, loading: false };
+    for (const s of scenes) s.media = { image: null, loading: false };
   }
 
   resize() {
@@ -120,26 +117,6 @@ export class Stage {
           this.onChange();
         });
     }
-    if (s.video && !this.reduceMotion && !m.video) {
-      const v = document.createElement('video');
-      v.muted = true;
-      v.playsInline = true;
-      v.preload = 'auto';
-      v.src = s.video;
-      const redraw = () => {
-        this.dirty = true;
-        this.onChange();
-      };
-      v.addEventListener('loadeddata', redraw);
-      v.addEventListener('seeked', redraw);
-      v.addEventListener('error', () => {
-        m.video = null;
-        redraw();
-      });
-      // Muted inline play is allowed without a gesture; it wakes the decoder on iOS.
-      v.play().then(() => v.pause()).catch(() => {});
-      m.video = v;
-    }
   }
 
   /** @param {Scene} s */
@@ -149,17 +126,11 @@ export class Stage {
       m.image.width = m.image.height = 0;
       m.image = null;
     }
-    if (m.video) {
-      m.video.removeAttribute('src');
-      m.video.load();
-      m.video = null;
-    }
   }
 
   /** @param {Scene} s */
   ready(s) {
-    const { image, video } = s.media;
-    return Boolean(image || (video && video.readyState >= 2));
+    return Boolean(s.media.image);
   }
 
   // g is the story position: chapter index plus progress through it (0..1).
@@ -214,38 +185,22 @@ export class Stage {
     ctx.globalAlpha = 1;
   }
 
-  // Draw a scene cover-fit, with its camera move at progress u (0..1).
+  // Draw a scene, by its fit, with its camera move at progress u (0..1).
   /** @param {CanvasRenderingContext2D} ctx @param {Scene} s @param {number} u */
   draw(ctx, s, u) {
     ctx.imageSmoothingEnabled = true;
     ctx.imageSmoothingQuality = 'high';
     const W = this.canvas.width;
     const H = this.canvas.height;
-    const { image, video } = s.media;
-    let src = null;
-    let sw = 0;
-    let sh = 0;
+    const { image } = s.media;
 
-    if (video && video.readyState >= 2 && video.videoWidth) {
-      const dur = video.duration;
-      if (Number.isFinite(dur) && dur > 0) {
-        const want = clamp(u, 0, 1) * Math.max(0, dur - 0.04);
-        if (!video.seeking && Math.abs(video.currentTime - want) > 1 / 60) video.currentTime = want;
-      }
-      src = video;
-      sw = video.videoWidth;
-      sh = video.videoHeight;
-    } else if (image) {
-      src = image;
-      sw = image.naturalWidth || image.width;
-      sh = image.naturalHeight || image.height;
-    }
-
-    if (!src) {
+    if (!image) {
       ctx.fillStyle = PAPER;
       ctx.fillRect(0, 0, W, H);
       return;
     }
+    const sw = image.naturalWidth || image.width;
+    const sh = image.naturalHeight || image.height;
 
     const e = smooth(0, 1, u);
     const [z0, z1] = s.zoom;
@@ -268,7 +223,7 @@ export class Stage {
         x += s.drift[0] * W * e;
         y += s.drift[1] * H * e;
       }
-      ctx.drawImage(src, x, y, dw, dh);
+      ctx.drawImage(image, x, y, dw, dh);
       return;
     }
 
@@ -284,7 +239,7 @@ export class Stage {
     }
     x = clamp(x, W - dw, 0);
     y = clamp(y, H - dh, 0);
-    ctx.drawImage(src, x, y, dw, dh);
+    ctx.drawImage(image, x, y, dw, dh);
   }
 
   // The reveal order for a scene: low values fill first. Distance from the

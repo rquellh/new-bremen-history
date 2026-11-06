@@ -18,7 +18,6 @@ const TYPES: Record<string, string> = {
   '.webp': 'image/webp',
   '.png': 'image/png',
   '.jpg': 'image/jpeg',
-  '.mp4': 'video/mp4',
 };
 
 createServer(async (req, res) => {

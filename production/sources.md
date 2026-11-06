@@ -37,7 +37,9 @@ written in our own words; facts are not copyrightable, but the photos and the
   first in Schroeder's 12 x 14 ft log hut. (SET)
 - June 11, 1833: the plat of "Bremen" recorded at St. Marys; 102 lots, one per
   member, the rest sold for $25. (SET, CHR, CAN)
-- 1835: post office opens and the name becomes New Bremen. (CHR, SET, CAN)
+- 1835: first post office opens; the name changes from "Bremen" to New Bremen (CHR, same
+  1835 entry), "to differentiate it from the town of Bremen in Fairfield County" (CAN).
+  Neither says the post office caused the change, so the copy gives both without linking them.
 - Image: NBHA photos1083 is a drawing, not a photograph, so its credit and alt text say
   "Drawing" (`kind = "drawing"` in photos.toml). NBHA's caption says "begun in 1837"; NBHA
   says "believed built about 1837", so the credit says "built about 1837".
@@ -62,9 +64,15 @@ written in our own words; facts are not copyrightable, but the photos and the
 - A rail line came through New Bremen in 1871. (SET)
 
 ### 6. Frogtown and Cheesequarters
-- Bremen was west of the canal; Ober Bremen, platted 1853, east of it. (CHR, CAN)
-- Nicknames: "Frogtown" (east), "Cheesequarters" (west). (CHR, CAN)
-- Vote of 101 to 16 on October 12, 1875; annexation in 1876. (CHR, CAN)
+- The original town, New Bremen since 1835, was west of the canal; Ober Bremen, platted
+  1853, east of it. (CHR, CAN) The copy says "New Bremen" for the west side so it doesn't
+  read as if the name came from the merger.
+- Nicknames: "Frogtown" (east), "Cheesequarters" (west), used "even after the combining".
+  (CAN) Hence "The nicknames stuck long after."
+- October 12, 1875: an election "to annex Ober Bremen to the Incorporated Village of New
+  Bremen" passed 101 to 16, and it "was annexed the following year". (CHR) Ober Bremen kept
+  its own school, fire department, town hall and mayor "until the union of the two towns in
+  1876". (CAN)
 
 ### 7. Gaslight and an Opera House
 - Natural gas lit on July 3, 1888, before crowds. (CHR, SET)

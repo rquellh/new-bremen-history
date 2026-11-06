@@ -1,10 +1,13 @@
 # New Bremen History
 
 The history of New Bremen, Ohio, told as a scrolling story in real photographs. Served at
-https://www.ryanquellhorst.com/new-bremen-history/ from the `main` branch.
+https://newbremen.ryanquellhorst.com/ from the `main` branch.
 
-It's a static site: plain HTML, CSS and JavaScript, with no build step and no
-dependencies beyond Google Fonts.
+It's a TypeScript project run by Node. The tools that build the photos, serve a
+local preview and type-check the code are TypeScript (`scripts/`), with their
+dependencies installed by npm. The page they produce is static: HTML, CSS and
+browser JavaScript (`assets/js/`, type-checked by TypeScript through JSDoc
+comments), which GitHub Pages serves as-is with no build step.
 
 ## How it works
 
@@ -52,8 +55,6 @@ be published until they give permission.
 - [storyboard.md](production/storyboard.md): the chapters and layout rules.
 - [sources.md](production/sources.md): every fact in the text and where it came
   from, plus what was left out and why.
-- [ai-experiment/](production/ai-experiment/): an abandoned attempt at AI
-  paintings, and why it was dropped.
 
 ## Credits
 

@@ -1,12 +1,11 @@
 // Turns the chapters into a scroll-driven story. Each <section class="chapter">
-// is a stretch of scroll; its position drives the painting stage, the copy
+// is a stretch of scroll; its position drives the photo stage, the copy
 // fades, and the chapter rail. Chapter settings come from data attributes:
 //   data-span   scroll length in viewport heights (default 3)
-//   data-focus  "x y" point of the painting to keep in view when cropped
+//   data-focus  "x y" point of the photo to keep in view when cropped ("cover" only)
 //   data-zoom   "from to" camera zoom across the chapter
 //   data-drift  "x y" camera drift across the chapter, as a fraction of the screen
 //   data-bleed  "x y" point the ink spreads from when this chapter arrives
-//   data-video  optional clip, scrubbed by scroll in place of the still
 //   data-fit    "contain" (default: the whole photo beside the text) or "cover"
 // and on each .copy, data-show="in out" in chapter progress (0..1).
 
@@ -51,7 +50,6 @@ const scenes = /** @type {Chapter[]} */ (chapterEls.map((el, index) => {
       srcset: img.getAttribute('srcset'),
       sizes: img.getAttribute('sizes'),
     },
-    video: el.dataset.video || null,
     // "contain" lays the whole photo beside the text; "cover" fills the screen.
     fit: el.dataset.fit || 'contain',
     side: (el.querySelector('.copy:not(.opening)')?.className.match(/copy--(left|right|bottom|center)/) || [])[1] || 'left',
