@@ -19,7 +19,6 @@ The display copy lives in `index.html`. Facts and their sources are in
   phones it sits above the text. A slow camera move, then the next photo bleeds
   in like ink spreading on wet paper.
 - **Paper:** warm cream mulberry paper with fibers, laid over everything.
-- **Markers:** a small red seal with the chapter's year, like a painter's chop.
 
 ## Chapters
 
