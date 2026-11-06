@@ -1,9 +1,9 @@
-# The photograph behind each chapter. scripts/build_photos.py reads this file.
+# The photograph behind each chapter. scripts/build-photos.ts (npm run photos) reads this file.
 #
 # All photos are from the New Bremen Historic Association's galleries
 # (https://newbremenhistory.org/en/content/category/25-photo-galleries) and are
 # shown with their real dates. They are rendered in the ink style with ordinary
-# image filters (scripts/ink_photo.py); nothing is generated or invented.
+# image filters (scripts/ink.ts); nothing is generated or invented.
 #
 # clean: rectangles [x, y, w, h] as fractions of the photo, holding captions
 #   that were written or printed on the photo. They're filled in from the

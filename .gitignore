@@ -3,5 +3,4 @@
 production/masters/
 production/references/*
 !production/references/README.md
-__pycache__/
-.venv/
+node_modules/

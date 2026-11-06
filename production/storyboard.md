@@ -14,7 +14,7 @@ The display copy lives in `index.html`. Facts and their sources are in
 - **Real photographs only.** Each chapter shows one photo from the New Bremen
   Historic Association's galleries, whole and uncropped, with its real date and
   credit. It is rendered in ink tones with ordinary image filters, so nothing is
-  invented (see `production/photos.toml` and `scripts/build_photos.py`).
+  invented (see `production/photos.toml` and `scripts/build-photos.ts`).
 - **On the page:** the photo sits like a print on the side opposite the text; on
   phones it sits above the text. A slow camera move, then the next photo bleeds
   in like ink spreading on wet paper.
